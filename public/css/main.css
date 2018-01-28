@@ -7,12 +7,12 @@ body {
 }
 
 ::-moz-selection {
-    background: #5e3926;
+    background: #d98836;
     color: #ffffff;
     text-shadow: none;
 }
 ::selection {
-    background: #5e3926;
+    background: #d98836;
     color: #ffffff;
     text-shadow: none;
 }
@@ -30,11 +30,25 @@ body {
     padding: 1.875rem 0;
 }
 
+.page-actions,
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.acting-as-anchor {
+    color: #d98836;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 /*  ==========================================================================
     OVERRIDES
     ========================================================================== */
 a {
-    color: #5e3926;
+    color: #d98836;
     transition-duration: .2s;
 }
 a:hover,
@@ -56,6 +70,21 @@ button:active {
 }
 
 /*  ==========================================================================
+    TABLES
+    ========================================================================== */
+.table-bb {
+    border-bottom: 1px solid #dee2e6;
+}
+.table-bb thead tr th {
+    border-width: 1px;
+    background-color: #fbfbfb;
+}
+
+.table tr.inactive-member a {
+    color: #6c757d;
+}
+
+/*  ==========================================================================
     BUTTONS
     ========================================================================== */
 .btn:focus,
@@ -67,6 +96,7 @@ button:active {
 .btn-primary {
     background-color: #d98836;
     border-color: #d98836;
+    color: #f0deca;
 }
 
 .btn-primary:hover,
@@ -79,6 +109,7 @@ button:active {
 .show > .btn-primary.dropdown-toggle {
     background-color: #c37a30;
     border-color: #c37a30;
+    color: #f0deca;
 }
 
 .btn-link {
@@ -93,6 +124,11 @@ button:active {
 /*  ==========================================================================
     FORMS
     ========================================================================== */
+.form-container {
+    max-width: 700px;
+    width: 100%;
+}
+
 .form-control:focus {
     box-shadow: none;
     outline: 0;
@@ -130,6 +166,28 @@ button:active {
 .custom-control-input:focus~.custom-control-label::before {
     box-shadow: none;
 }
+
+/*  ==========================================================================
+    ALERTS
+    ========================================================================== */
+.alert {
+    border: 0;
+}
+    .alert ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .alert ul li {
+        display: block;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .alert ul li svg {
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+    }
 
 /*  ==========================================================================
     CARDS

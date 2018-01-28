@@ -17,4 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Members Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('members')->group(function () {
+
+    Route::get('/all', 'UsersController@allMembers')->name('members.all');
+    Route::get('/add', 'UsersController@addMember')->name('members.add');
+    Route::post('/save', 'UsersController@saveMember')->name('members.save');
+    Route::get('/{member}/edit', 'UsersController@editMember')->name('members.edit');
+    Route::post('/{member}/update', 'UsersController@updateMember')->name('members.update');
+    Route::post('/{member}/switch-status', 'UsersController@switchMemberStatus')->name('members.status.switch');
+
+});

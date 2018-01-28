@@ -35,7 +35,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         >
                             <i class="fas fa-user-circle fa-fw fa-lg"></i>
-                            <span>{{ 'Dev Friend' }}</span>
+                            <span>{{ auth()->user()->first_name }}</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="upanel-dropdown">
                             <a class="dropdown-item" href="#">Account Settings</a>
@@ -59,9 +59,15 @@
     <nav class="librory-nav">
         <ul>
             <li>
-                <a href="#">
+                <a href="{{ route('dashboard') }}">
                     <i class="fas fa-home fa-fw fa-lg"></i>
                     <span>{{ config('app.name') }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('members.all') }}">
+                    <i class="fas fa-users fa-fw fa-lg"></i>
+                    <span>Members</span>
                 </a>
             </li>
         </ul>

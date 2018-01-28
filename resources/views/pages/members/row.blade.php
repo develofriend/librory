@@ -13,7 +13,7 @@
         {{ $member->contact_number }}
     </td>
     <td class="text-right">
-        <a href="#">
+        <a href="{{ $member->editMemberUrl() }}">
             <i class="fas fa-pencil-alt fafw"></i>
         </a>
     </td>

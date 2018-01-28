@@ -43,4 +43,11 @@ class User extends Authenticatable
 
         return $returnQuery ? $query : $query->get();
     }
+
+    public function editMemberUrl()
+    {
+        return route('members.edit', [
+            'member' => $this->id
+        ]);
+    }
 }

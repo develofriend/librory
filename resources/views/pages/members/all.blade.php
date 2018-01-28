@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-actions">
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('members.add') }}" class="btn btn-primary">
                     Add New Member
                 </a>
             </div>

@@ -18,4 +18,26 @@ class UsersController extends Controller
 
         return view('pages.members.all', compact('members'));
     }
+
+    public function addMember()
+    {
+        return view('pages.members.add');
+    }
+
+    public function saveMember(Request $request)
+    {
+
+    }
+
+    public function editMember(User $member)
+    {
+        return view('pages.members.edit', compact(
+            'member'
+        ));
+    }
+
+    public function updateMember(Request $request, User $member)
+    {
+
+    }
 }

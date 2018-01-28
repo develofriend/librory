@@ -25,4 +25,24 @@ class Publisher extends Model
 
         return $returnQuery ? $query : $query->get();
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function editUrl()
+    {
+        return route('publishers.edit', [
+            'publisher' => $this->id
+        ]);
+    }
+
+    public function updateUrl()
+    {
+        return route('publishers.update', [
+            'publisher' => $this->id
+        ]);
+    }
 }

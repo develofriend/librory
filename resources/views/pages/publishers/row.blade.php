@@ -8,7 +8,7 @@
     <td>{{ $publisher->email }}</td>
     <td>{{ $publisher->contact_number }}</td>
     <td class="text-right text-nowrap">
-        <a href="#">
+        <a href="{{ $publisher->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
     </td>

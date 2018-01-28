@@ -2,9 +2,10 @@
 
 namespace Librory\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddPublisherRequest extends FormRequest
+class EditPublisherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +25,17 @@ class AddPublisherRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:publishers,name',
+            'name' => [
+                'required',
+                Rule::unique('publishers')->ignore($this->publisherId())
+            ],
             'address' => 'required',
             'contact_number' => 'required'
         ];
+    }
+
+    protected function publisherId()
+    {
+        return $this->route('publisher')->id;
     }
 }

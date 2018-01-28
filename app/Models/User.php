@@ -44,10 +44,44 @@ class User extends Authenticatable
         return $returnQuery ? $query : $query->get();
     }
 
+    /**
+     * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
     public function editMemberUrl()
     {
         return route('members.edit', [
             'member' => $this->id
         ]);
+    }
+
+    public function updateMemberUrl()
+    {
+        return route('members.update', [
+            'member' => $this->id
+        ]);
+    }
+
+    public function switchMemberStatusUrl()
+    {
+        return route('members.status.switch', [
+            'member' => $this->id
+        ]);
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Unsorted functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function switchStatus()
+    {
+        $this->is_active = ! $this->is_active;
+        $this->save();
+
+        return $this;
     }
 }

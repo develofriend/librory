@@ -4,6 +4,7 @@ namespace Librory\Http\Controllers;
 
 use Librory\Models\User;
 use Illuminate\Http\Request;
+use Librory\Http\Requests\EditMemberRequest;
 use Librory\Http\Requests\AddNewMemberRequest;
 
 class UsersController extends Controller
@@ -40,8 +41,24 @@ class UsersController extends Controller
         ));
     }
 
-    public function updateMember(Request $request, User $member)
+    public function updateMember(EditMemberRequest $request, User $member)
     {
+        $member->update($request->except(['_token']));
 
+        return redirect()->route('members.all')
+            ->withNotification('Successfully updated member profile.');
+    }
+
+    public function switchMemberStatus(User $member)
+    {
+        $member->switchStatus();
+
+        return response()->json([
+            'done' => true,
+            'id' => $member->id,
+            'updatedRow' => view('pages.members.row', compact(
+                'member'
+            ))->render()
+        ]);
     }
 }

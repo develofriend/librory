@@ -45,3 +45,32 @@
     </div>
 </div>
 @endsection
+
+@section('footer-addon')
+<script>
+$(function () {
+
+    $(document)
+
+    // switch status
+    .on('click', '.switch-status', function (e) {
+        e.preventDefault();
+        var dom = $(this),
+            url = dom.data('url');
+
+        dom.prop('disabled', true);
+        $.post(url)
+            .done(function (r) {
+                if (r.done) {
+                    $('#member-' + r.id).replaceWith(r.updatedRow);
+                }
+                dom.prop('disabled', false);
+            })
+            .fail(function (r) {
+                dom.prop('disabled', false);
+            });
+    });
+
+});
+</script>
+@endsection

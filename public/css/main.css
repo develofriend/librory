@@ -35,6 +35,15 @@ body {
     margin-bottom: 2rem;
 }
 
+.acting-as-anchor {
+    color: #d98836;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 /*  ==========================================================================
     OVERRIDES
     ========================================================================== */
@@ -69,6 +78,10 @@ button:active {
 .table-bb thead tr th {
     border-width: 1px;
     background-color: #fbfbfb;
+}
+
+.table tr.inactive-member a {
+    color: #6c757d;
 }
 
 /*  ==========================================================================

@@ -12,4 +12,17 @@ class Publisher extends Model
         'email',
         'contact_number',
     ];
+
+    /**
+     * -------------------------------------------------------------------------
+     * Scope functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function scopeOrderByName($query, $returnQuery = false)
+    {
+        $query = $query->orderBy('name');
+
+        return $returnQuery ? $query : $query->get();
+    }
 }

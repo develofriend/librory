@@ -16,7 +16,7 @@ class PublishersController extends Controller
 
     public function all()
     {
-        $publishers = Publisher::all();
+        $publishers = Publisher::orderByName();
 
         return view('pages.publishers.all', compact(
             'publishers'

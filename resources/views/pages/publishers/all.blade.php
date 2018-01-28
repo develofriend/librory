@@ -28,12 +28,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($members as $member)
-                        @include('pages.members.row')
+                    @forelse ($publishers as $publisher)
+                        @include('pages.publishers.row')
                     @empty
                         <tr>
                             <td colspan="5" class="text-center active noselect">
-                                No members yet
+                                No publishers yet
                             </td>
                         </tr>
                     @endforelse

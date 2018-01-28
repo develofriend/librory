@@ -6,7 +6,7 @@
     @yield('head-addon')
 
 </head>
-<body class="@yield('body-class') auth-body @if (auth()->check()) auth-body @endif">
+<body class="@yield('body-class') @if (auth()->check()) auth-body @endif">
 
     @include('layouts.fragments.nav')
 

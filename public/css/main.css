@@ -7,12 +7,12 @@ body {
 }
 
 ::-moz-selection {
-    background: #5e3926;
+    background: #d98836;
     color: #ffffff;
     text-shadow: none;
 }
 ::selection {
-    background: #5e3926;
+    background: #d98836;
     color: #ffffff;
     text-shadow: none;
 }
@@ -30,11 +30,16 @@ body {
     padding: 1.875rem 0;
 }
 
+.page-actions,
+.page-header {
+    margin-bottom: 2rem;
+}
+
 /*  ==========================================================================
     OVERRIDES
     ========================================================================== */
 a {
-    color: #5e3926;
+    color: #d98836;
     transition-duration: .2s;
 }
 a:hover,
@@ -53,6 +58,17 @@ button:active {
 
 .bg-librory {
     background: #5e3926;
+}
+
+/*  ==========================================================================
+    TABLES
+    ========================================================================== */
+.table-bb {
+    border-bottom: 1px solid #dee2e6;
+}
+.table-bb thead tr th {
+    border-width: 1px;
+    background-color: #fbfbfb;
 }
 
 /*  ==========================================================================

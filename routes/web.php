@@ -17,4 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Members Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('members')->group(function () {
+
+    Route::get('/all', 'UsersController@allMembers')->name('members.all');
+
+});

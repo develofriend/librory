@@ -64,12 +64,25 @@
                     <span>{{ config('app.name') }}</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('members.all') }}">
-                    <i class="fas fa-users fa-fw fa-lg"></i>
-                    <span>Members</span>
-                </a>
-            </li>
+
+            @if (auth()->user()->isLibrorian())
+                <li>
+                    <a href="{{ route('members.all') }}">
+                        <i class="fas fa-users fa-fw fa-lg"></i>
+                        <span>Members</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (auth()->user()->isMember())
+                <li>
+                    <a href="#">
+                        <i class="fas fa-list-ol fa-fw fa-lg"></i>
+                        <span>Member Only</span>
+                    </a>
+                </li>
+            @endif
+
         </ul>
     </nav>
 

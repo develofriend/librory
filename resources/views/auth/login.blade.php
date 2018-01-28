@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'Login')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,7 +14,7 @@
 
                     <br />
 
-                    <form method="post" action="{{ route('login') }}">
+                    <form method="post" action="{{ route('login') }}" autocomplete="off">
 
                         <div class="form-group">
                             <label for="email">E-Mail Address</label>

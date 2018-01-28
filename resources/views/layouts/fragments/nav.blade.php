@@ -67,6 +67,12 @@
 
             @if (auth()->user()->isLibrorian())
                 <li>
+                    <a href="{{ route('publishers.all') }}">
+                        <i class="fas fa-briefcase fa-fw fa-lg"></i>
+                        <span>Publishers</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('members.all') }}">
                         <i class="fas fa-users fa-fw fa-lg"></i>
                         <span>Members</span>

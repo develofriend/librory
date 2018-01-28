@@ -2,6 +2,7 @@
 
 namespace Librory\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Librory\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -26,6 +27,19 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/dashboard';
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        $credentials = $request->only($this->username(), 'password');
+        $credentials['is_active'] = 1;
+        return $credentials;
+    }
 
     /**
      * Create a new controller instance.

@@ -7,6 +7,8 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-6 col-lg-5">
 
+            @include('components.errors')
+
             <div class="card">
                 <div class="card-body">
 

@@ -8,3 +8,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/rwd.css') }}" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" />
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

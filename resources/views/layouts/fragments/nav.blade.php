@@ -1,55 +1,70 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+@guest
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <nav class="navbar navbar-expand-lg navbar-librory bg-librory">
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-alt-menu" aria-controls="navbar-alt-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-alt-menu">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+            </div>
         </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+    </nav>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+@else
+
+    <div id="nav-alt">
+
+        <div class="d-flex justify-content-between">
+
+            <div class="nav-trigger-wrap d-xl-none d-lg-none">
+                <button type="button" class="nav-trigger">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+
+            <div class="upanel-wrap">
+                <ul>
+                    <li class="upanel dropdown">
+                        <a href="#" id="upanel-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        >
+                            <i class="fas fa-user-circle fa-fw fa-lg"></i>
+                            <span>{{ 'Dev Friend' }}</span>
                         </a>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
+                        <div class="dropdown-menu" aria-labelledby="upanel-dropdown">
+                            <a class="dropdown-item" href="#">Account Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                     </li>
-                @endguest
-            </ul>
+                </ul>
+            </div>
+
         </div>
+
     </div>
-</nav>
+    <nav class="librory-nav">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fas fa-home fa-fw fa-lg"></i>
+                    <span>{{ config('app.name') }}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+@endguest

@@ -32,7 +32,7 @@ class UsersController extends Controller
         $newMember = User::create($request->except(['_token']));
 
         return redirect()->route('members.all')
-            ->withNotification('Successfully create a new member.');
+            ->withStatus('Successfully create a new member.');
     }
 
     public function editMember(User $member)
@@ -47,7 +47,7 @@ class UsersController extends Controller
         $member->update($request->except(['_token']));
 
         return redirect()->route('members.all')
-            ->withNotification('Successfully updated member profile.');
+            ->withStatus('Successfully updated member profile.');
     }
 
     public function switchMemberStatus(User $member)

@@ -34,3 +34,18 @@ Route::prefix('members')->group(function () {
     Route::post('/{member}/switch-status', 'UsersController@switchMemberStatus')->name('members.status.switch');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Publishers Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('publishers')->group(function () {
+
+    Route::get('/all', 'PublishersController@all')->name('publishers.all');
+    Route::get('/add', 'PublishersController@add')->name('publishers.add');
+    Route::post('/save', 'PublishersController@save')->name('publishers.save');
+    Route::get('/{publisher}/edit', 'PublishersController@edit')->name('publishers.edit');
+    Route::post('/{publisher}/update', 'PublishersController@update')->name('publishers.update');
+
+});

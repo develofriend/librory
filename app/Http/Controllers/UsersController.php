@@ -4,6 +4,7 @@ namespace Librory\Http\Controllers;
 
 use Librory\Models\User;
 use Illuminate\Http\Request;
+use Librory\Http\Requests\AddNewMemberRequest;
 
 class UsersController extends Controller
 {
@@ -24,9 +25,12 @@ class UsersController extends Controller
         return view('pages.members.add');
     }
 
-    public function saveMember(Request $request)
+    public function saveMember(AddNewMemberRequest $request)
     {
+        $newMember = User::create($request->except(['_token']));
 
+        return redirect()->route('members.all')
+            ->withNotification('Successfully create a new member.');
     }
 
     public function editMember(User $member)

@@ -7,6 +7,8 @@
     <div class="row">
         <div class="col-12">
 
+            @include('components.notification')
+
             <div class="page-header">
                 <h2>Members</h2>
             </div>

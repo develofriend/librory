@@ -1,6 +1,6 @@
 @guest
 
-    <nav class="navbar navbar-expand-lg navbar-librory bg-librory">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-librory bg-librory">
 
         <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
 

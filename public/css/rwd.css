@@ -16,7 +16,7 @@
         padding: 1.875rem 0.9375rem;
     }
 
-    body {
+    body.auth-body {
         padding-top: 0;
     }
 

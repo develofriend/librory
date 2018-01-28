@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \Librory\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'librorian' => \Librory\Http\Middleware\Librorian::class,
+        'member' => \Librory\Http\Middleware\Member::class,
     ];
 }

@@ -27,16 +27,34 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * -------------------------------------------------------------------------
+     * Accessor functions
+     * -------------------------------------------------------------------------
+     */
+
     public function getNameAttribute()
     {
         return $this->attributes['last_name'] . ',
             ' . $this->attributes['first_name'];
     }
 
+    /**
+     * -------------------------------------------------------------------------
+     * Mutator functions
+     * -------------------------------------------------------------------------
+     */
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Scope functions
+     * -------------------------------------------------------------------------
+     */
 
     public function scopeMembers($query, $returnQuery = false)
     {

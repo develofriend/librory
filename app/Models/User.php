@@ -2,12 +2,13 @@
 
 namespace Librory\Models;
 
+use Librory\Traits\HasRole;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRole;
 
     protected $fillable = [
         'first_name',

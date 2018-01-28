@@ -2,12 +2,13 @@
 
 namespace Librory\Models;
 
+use Librory\Traits\HasRole;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRole;
 
     protected $fillable = [
         'first_name',
@@ -26,16 +27,34 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * -------------------------------------------------------------------------
+     * Accessor functions
+     * -------------------------------------------------------------------------
+     */
+
     public function getNameAttribute()
     {
         return $this->attributes['last_name'] . ',
             ' . $this->attributes['first_name'];
     }
 
+    /**
+     * -------------------------------------------------------------------------
+     * Mutator functions
+     * -------------------------------------------------------------------------
+     */
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Scope functions
+     * -------------------------------------------------------------------------
+     */
 
     public function scopeMembers($query, $returnQuery = false)
     {

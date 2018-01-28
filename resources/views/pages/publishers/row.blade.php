@@ -9,7 +9,7 @@
     <td>{{ $publisher->contact_number }}</td>
     <td class="text-right text-nowrap">
         <a href="#">
-            <i class="fas fa-pencil fa-fw"></i>
+            <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
     </td>
 </tr>

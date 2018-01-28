@@ -10,4 +10,5 @@
 <link rel="stylesheet" href="{{ asset('css/rwd.css') }}" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

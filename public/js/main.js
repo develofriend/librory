@@ -21,3 +21,25 @@ $(function () {
     });
 
 });
+
+function notify(notification, status = 'success')
+{
+    var notify = $.notify({
+        message: notification
+    },{
+        type: status,
+        timer: 500,
+        placement: {
+            from: "bottom",
+            align: "right"
+        },
+        animate: {
+            enter: 'animated flipInX',
+            exit: 'animated flipOutX'
+        }
+    });
+
+    $(notify.$ele).on('click', function () {
+        notify.close();
+    });
+}

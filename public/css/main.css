@@ -44,6 +44,29 @@ body {
     cursor: pointer;
 }
 
+.alert[data-notify="container"] {
+    width: auto!important;
+    max-width: 200px;
+    padding-left: 20px;
+    padding-right: 36px;
+    cursor: pointer;
+    z-index: 1080!important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    .alert[data-notify="container"].alert-success {
+        background-color: #d98836;
+        color: #f0deca;
+    }
+    .alert[data-notify="container"].alert-success button.close {
+        text-shadow: none;
+        color: #f0deca;
+    }
+
 /*  ==========================================================================
     OVERRIDES
     ========================================================================== */

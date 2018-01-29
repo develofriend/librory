@@ -15,7 +15,11 @@ class AuthorsController extends Controller
 
     public function all()
     {
+        $authors = Author::orderByName();
 
+        return view('pages.authors.all', compact(
+            'authors'
+        ));
     }
 
     public function add()

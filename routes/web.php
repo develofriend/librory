@@ -49,3 +49,18 @@ Route::prefix('publishers')->group(function () {
     Route::post('/{publisher}/update', 'PublishersController@update')->name('publishers.update');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Authors Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('authors')->group(function () {
+
+    Route::get('/all', 'AuthorsController@all')->name('authors.all');
+    Route::get('/add', 'AuthorsController@add')->name('authors.add');
+    Route::post('/save', 'AuthorsController@save')->name('authors.save');
+    Route::get('/{author}/edit', 'AuthorsController@edit')->name('authors.edit');
+    Route::post('/{author}/update', 'AuthorsController@update')->name('authors.update');
+
+});

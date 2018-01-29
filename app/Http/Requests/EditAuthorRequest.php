@@ -2,12 +2,11 @@
 
 namespace Librory\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Librory\Traits\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AddAuthorRequest extends FormRequest
+class EditAuthorRequest extends FormRequest
 {
     use JsonResponse;
 
@@ -19,7 +18,15 @@ class AddAuthorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:authors'
+            'name' => [
+                'required',
+                Rule::unique('authors')->ignore($this->authorId())
+            ]
         ];
+    }
+
+    protected function authorId()
+    {
+        return $this->route('author')->id;
     }
 }

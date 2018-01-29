@@ -5,6 +5,7 @@ namespace Librory\Http\Controllers;
 use Librory\Models\Author;
 use Illuminate\Http\Request;
 use Librory\Http\Requests\AddAuthorRequest;
+use Librory\Http\Requests\EditAuthorRequest;
 
 class AuthorsController extends Controller
 {
@@ -43,11 +44,19 @@ class AuthorsController extends Controller
 
     public function edit(Author $author)
     {
-
+        return response()->json([
+            'view' => view('pages.authors.edit', compact('author'))->render()
+        ]);
     }
 
-    public function update(Request $request, Author $author)
+    public function update(EditAuthorRequest $request, Author $author)
     {
+        $author->update($request->only(['name']));
 
+        session()->flash('status', 'Successfully updated an author.');
+
+        return response()->json([
+            'done' => true
+        ]);
     }
 }

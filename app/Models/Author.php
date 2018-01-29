@@ -22,4 +22,24 @@ class Author extends Model
 
         return $returnQuery ? $query : $query->get();
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function editUrl()
+    {
+        return route('authors.edit', [
+            'author' => $this->id
+        ]);
+    }
+
+    public function updateUrl()
+    {
+        return route('authors.update', [
+            'author' => $this->id
+        ]);
+    }
 }

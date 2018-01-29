@@ -51,13 +51,18 @@ $(function () {
     $(document)
 
     // add author
-    .on('click', '.add-author', function (e) {
+    .on('click', '.add-author, .edit-author', function (e) {
         e.preventDefault();
         var dom = $(this),
-            url = dom.data('url');
+            url = dom.data('url'),
+            title = 'Add Author';
+
+        if (dom.hasClass('edit-author')) {
+            title = 'Edit Author';
+        }
 
         bootbox.dialog({
-            title: 'Add Author',
+            title: title,
             message: '<div class="bootbox-preloader text-center"><i class="fas fa-circle-notch fa-spin"></i> Loading</div>',
             onEscape: true
         });

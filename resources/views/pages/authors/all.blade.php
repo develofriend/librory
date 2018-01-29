@@ -74,6 +74,29 @@ $(function () {
             .fail(function (r) {
                 bootbox.hideAll();
             });
+    })
+
+    // save author
+    .on('submit', '.ajax-form', function (e) {
+        e.preventDefault();
+        var form = $(this),
+            url = form.attr('action'),
+            data = form.serialize();
+
+        form.find('.buttons .btn').prop('disabled', true);
+        $.post(url, data)
+            .done(function (r) {
+                if (r.error) {
+                    form.find('.form-errors').html(r.error);
+                    form.find('.buttons .btn').prop('disabled', false);
+                }
+                if (r.done) {
+                    location.reload();
+                }
+            })
+            .fail(function (r) {
+                form.find('.buttons .btn').prop('disabled', false);
+            });
     });
 
 });

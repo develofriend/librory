@@ -4,6 +4,7 @@ namespace Librory\Http\Controllers;
 
 use Librory\Models\Author;
 use Illuminate\Http\Request;
+use Librory\Http\Requests\AddAuthorRequest;
 
 class AuthorsController extends Controller
 {
@@ -29,9 +30,15 @@ class AuthorsController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function save(AddAuthorRequest $request)
     {
+        $author = Author::create($request->only(['name']));
 
+        session()->flash('status', 'Successfully created a new author');
+
+        return response()->json([
+            'done' => true
+        ]);
     }
 
     public function edit(Author $author)

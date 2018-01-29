@@ -12,9 +12,9 @@
             </div>
 
             <div class="page-actions">
-                <a href="{{ route('authors.add') }}" class="btn btn-primary">
+                <button type="button" data-url="{{ route('authors.add') }}" class="btn btn-primary add-author">
                     Add New Author
-                </a>
+                </butto>
             </div>
 
             <table class="table table-bb">
@@ -47,6 +47,34 @@
 $(function () {
 
     @include('components.status')
+
+    $(document)
+
+    // add author
+    .on('click', '.add-author', function (e) {
+        e.preventDefault();
+        var dom = $(this),
+            url = dom.data('url');
+
+        bootbox.dialog({
+            title: 'Add Author',
+            message: '<div class="bootbox-preloader text-center"><i class="fas fa-circle-notch fa-spin"></i> Loading</div>',
+            onEscape: true
+        });
+
+        $.get(url)
+            .done(function (r) {
+                var target = $('.bootbox-preloader');
+                if (target.length == 1) {
+                    target.replaceWith(r.view);
+                } else {
+                    bootbox.hideAll();
+                }
+            })
+            .fail(function (r) {
+                bootbox.hideAll();
+            });
+    });
 
 });
 </script>

@@ -24,7 +24,9 @@ class AuthorsController extends Controller
 
     public function add()
     {
-
+        return response()->json([
+            'view' => view('pages.authors.add')->render()
+        ]);
     }
 
     public function save(Request $request)

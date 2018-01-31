@@ -4,6 +4,8 @@ namespace Librory\Http\Controllers;
 
 use Librory\Models\Shelf;
 use Illuminate\Http\Request;
+use Librory\Http\Requests\AddShelfRequest;
+use Librory\Http\Requests\EditShelfRequest;
 
 class ShelvesController extends Controller
 {
@@ -29,7 +31,7 @@ class ShelvesController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function save(AddShelfRequest $request)
     {
         $shelf = Shelf::create($request->only(['name']));
 
@@ -47,7 +49,7 @@ class ShelvesController extends Controller
         ]);
     }
 
-    public function update(Request $request, Shelf $shelf)
+    public function update(EditShelfRequest $request, Shelf $shelf)
     {
         $shelf->update($request->only(['name']));
 

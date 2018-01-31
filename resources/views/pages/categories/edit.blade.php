@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Add New Category')
+@section('page-title', 'Edit Category')
 
 @section('content')
 <div class="container-fluid">
@@ -13,15 +13,15 @@
                 @include('components.errors')
 
                 <div class="page-header">
-                    <h3>Add New Category</h3>
+                    <h3>Edit Category</h3>
                 </div>
 
-                <form action="{{ route('categories.save') }}" method="post" autocomplete="off">
+                <form action="{{ $category->updateUrl() }}" method="post" autocomplete="off">
 
                     <div class="form-group">
                         <label for="c-name">Name</label>
                         <input type="text" id="c-name" name="name" class="form-control" required
-                            value="{{ old('name') }}"
+                            value="{{ old('name', $category->name) }}"
                         />
                     </div>
 
@@ -31,7 +31,7 @@
                             <option></option>
                             @foreach ($shelves as $shelf)
                                 <option value="{{ $shelf->id }}"
-                                    @if (old('shelf_id') == $shelf->id) selected @endif
+                                    @if (old('shelf_id', $category->shelf_id) == $shelf->id) selected @endif
                                 >
                                     {{ $shelf->name }}
                                 </option>
@@ -41,7 +41,7 @@
 
                     <div class="form-group buttons">
                         <button type="submit" class="btn btn-primary">
-                            Submit
+                            Submit Changes
                         </button>
                         <a href="{{ route('categories.all') }}" class="btn btn-link">
                             Cancel

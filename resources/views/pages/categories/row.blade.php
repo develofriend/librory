@@ -12,7 +12,7 @@
         @endif
     </td>
     <td class="text-right">
-        <a href="#">
+        <a href="{{ $category->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
     </td>

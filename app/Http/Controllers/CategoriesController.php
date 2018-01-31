@@ -6,6 +6,7 @@ use Librory\Models\Shelf;
 use Illuminate\Http\Request;
 use Librory\Models\Category;
 use Librory\Http\Requests\AddCategoryRequest;
+use Librory\Http\Requests\EditCategoryRequest;
 
 class CategoriesController extends Controller
 {
@@ -47,11 +48,22 @@ class CategoriesController extends Controller
 
     public function edit(Category $category)
     {
+        $shelves = Shelf::all();
 
+        return view('pages.categories.edit', compact(
+            'shelves',
+            'category'
+        ));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(EditCategoryRequest $request, Category $category)
     {
+        $category->update($request->only([
+            'name',
+            'shelf_id'
+        ]));
 
+        return redirect()->route('categories.all')
+            ->withStatus('Successfully update category info.');
     }
 }

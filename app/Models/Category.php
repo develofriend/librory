@@ -46,4 +46,24 @@ class Category extends Model
 
         return $returnQuery ? $query : $query->get();
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function editUrl()
+    {
+        return route('categories.edit', [
+            'category' => $this->id
+        ]);
+    }
+
+    public function updateUrl()
+    {
+        return route('categories.update', [
+            'category' => $this->id
+        ]);
+    }
 }

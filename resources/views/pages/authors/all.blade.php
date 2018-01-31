@@ -14,7 +14,7 @@
             <div class="page-actions">
                 <button type="button" data-url="{{ route('authors.add') }}" class="btn btn-primary add-author">
                     Add New Author
-                </butto>
+                </button>
             </div>
 
             <table class="table table-bb">

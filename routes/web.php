@@ -64,3 +64,18 @@ Route::prefix('authors')->group(function () {
     Route::post('/{author}/update', 'AuthorsController@update')->name('authors.update');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Shelves Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('shelves')->group(function () {
+
+    Route::get('/all', 'ShelvesController@all')->name('shelves.all');
+    Route::get('/add', 'ShelvesController@add')->name('shelves.add');
+    Route::post('/save', 'ShelvesController@save')->name('shelves.save');
+    Route::get('/{shelf}/edit', 'ShelvesController@edit')->name('shelves.edit');
+    Route::post('/{shelf}/update', 'ShelvesController@update')->name('shelves.update');
+
+});

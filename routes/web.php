@@ -79,3 +79,18 @@ Route::prefix('shelves')->group(function () {
     Route::post('/{shelf}/update', 'ShelvesController@update')->name('shelves.update');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Shelves Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('categories')->group(function () {
+
+    Route::get('/all', 'CategoriesController@all')->name('categories.all');
+    Route::get('/add', 'CategoriesController@add')->name('categories.add');
+    Route::post('/save', 'CategoriesController@save')->name('categories.save');
+    Route::get('/{category}/edit', 'CategoriesController@edit')->name('categories.edit');
+    Route::post('/{category}/update', 'CategoriesController@update')->name('categories.update');
+
+});

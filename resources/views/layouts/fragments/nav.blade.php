@@ -79,6 +79,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('shelves.all') }}">
+                        <i class="fas fa-server fa-fw fa-lg" data-fa-transform="rotate-270"></i>
+                        <span>Shelves</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('members.all') }}">
                         <i class="far fa-id-card fa-fw fa-lg"></i>
                         <span>Members</span>

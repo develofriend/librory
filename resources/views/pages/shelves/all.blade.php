@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Authors')
+@section('page-title', 'Shelves')
 
 @section('content')
 <div class="container-fluid">
@@ -8,33 +8,33 @@
         <div class="col-12">
 
             <div class="page-header">
-                <h2>Authors</h2>
+                <h2>Shelves</h2>
             </div>
 
             <div class="page-actions">
-                <button type="button" data-url="{{ route('authors.add') }}" class="btn btn-primary add-author">
-                    Add New Author
+                <button type="button" data-url="{{ route('shelves.add') }}" class="btn btn-primary add-shelf">
+                    Add New Shelf
                 </button>
             </div>
 
             <table class="table table-bb">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th class="text-right">&nbsp;</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($authors as $author)
-                    @include('pages.authors.row')
-                @empty
+                <thead>
                     <tr>
-                        <td colspan="5" class="text-center active noselect">
-                            No authors yet
-                        </td>
+                        <th scope="col">Name</th>
+                        <th class="text-right">&nbsp;</th>
                     </tr>
-                @endforelse
-            </tbody>
+                </thead>
+                <tbody>
+                    @forelse ($shelves as $shelf)
+                        @include('pages.shelves.row')
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center active noselect">
+                                No shelves yet
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
             </table>
 
         </div>
@@ -50,15 +50,15 @@ $(function () {
 
     $(document)
 
-    // add author
-    .on('click', '.add-author, .edit-author', function (e) {
+    // add shelf
+    .on('click', '.add-shelf, .edit-shelf', function (e) {
         e.preventDefault();
         var dom = $(this),
             url = dom.data('url'),
-            title = 'Add Author';
+            title = 'Add Shelf';
 
-        if (dom.hasClass('edit-author')) {
-            title = 'Edit Author';
+        if (dom.hasClass('edit-shelf')) {
+            title = 'Edit Shelf';
         }
 
         bootbox.dialog({
@@ -81,7 +81,7 @@ $(function () {
             });
     })
 
-    // save author
+    // save shelf
     .on('submit', '.ajax-form', function (e) {
         e.preventDefault();
         var form = $(this),

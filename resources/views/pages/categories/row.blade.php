@@ -5,9 +5,11 @@
         </a>
     </td>
     <td>
-        <a href="#">
-
-        </a>
+        @if ($category->shelf)
+            <a href="#">
+                {{ $category->shelf->name }}
+            </a>
+        @endif
     </td>
     <td class="text-right">
         <a href="#">

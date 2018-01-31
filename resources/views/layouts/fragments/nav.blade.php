@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('publishers.all') }}">
+                    <a href="{{ route('shelves.all') }}">
                         <i class="fas fa-server fa-fw fa-lg" data-fa-transform="rotate-270"></i>
                         <span>Shelves</span>
                     </a>

@@ -10,7 +10,7 @@ class ShelvesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('librory');
+        $this->middleware('librorian');
     }
 
     public function all()
@@ -24,21 +24,37 @@ class ShelvesController extends Controller
 
     public function add()
     {
-
+        return response()->json([
+            'view' => view('pages.shelves.add')->render()
+        ]);
     }
 
     public function save(Request $request)
     {
+        $shelf = Shelf::create($request->only(['name']));
 
+        session()->flash('status', 'Successfully created a new shelf');
+
+        return response()->json([
+            'done' => true
+        ]);
     }
 
     public function edit(Shelf $shelf)
     {
-
+        return response()->json([
+            'view' => view('pages.shelves.edit', compact('shelf'))->render()
+        ]);
     }
 
     public function update(Request $request, Shelf $shelf)
     {
+        $shelf->update($request->only(['name']));
 
+        session()->flash('status', 'Successfully updated shelf info');
+
+        return response()->json([
+            'done' => true
+        ]);
     }
 }

@@ -21,6 +21,9 @@
             <thead>
                 <tr>
                     <th scope="col">Title</th>
+                    <th scope="col">Authors</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Categories</th>
                     <th class="text-right">&nbsp;</th>
                 </tr>
             </thead>
@@ -29,7 +32,7 @@
                     @include('pages.books.row')
                 @empty
                     <tr>
-                        <td colspan="2" class="text-center active noselect">
+                        <td colspan="5" class="text-center active noselect">
                             No books yet
                         </td>
                     </tr>

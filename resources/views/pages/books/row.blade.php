@@ -4,6 +4,21 @@
             <strong>{{ $book->title }}</strong>
         </a>
     </td>
+    <td>
+        @foreach ($book->authors as $author)
+            @if (! $loop->first), @endif
+            <a href="#">{{ $author->name }}</a>
+        @endforeach
+    </td>
+    <td>
+        {{ $book->publisher->name }}
+    </td>
+    <td>
+        @foreach ($book->categories as $category)
+            @if (! $loop->first), @endif
+            <a href="#">{{ $category->name }}</a>
+        @endforeach
+    </td>
     <td class="text-right">
         <a href="{{ $book->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>

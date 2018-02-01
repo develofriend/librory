@@ -27,6 +27,11 @@ class Book extends Model
         return $this->belongsTo(Publisher::class, 'publisher_id', 'id');
     }
 
+    public function bookCategories()
+    {
+        return $this->hasMany(BookCategory::class, 'book_id', 'id');
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Scope functions
@@ -58,5 +63,38 @@ class Book extends Model
         return route('books.update', [
             'book' => $this->id
         ]);
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Unsorted functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function linkCategories($categories)
+    {
+        if (count($categories) == 0) {
+            return;
+        }
+
+        if (count($this->bookCategories) > 0) {
+            $this->bookCategories()->delete();
+        }
+
+        $categories = Category::whereIn('id', $categories)->get();
+        $data = [];
+        foreach ($categories as $category) {
+            array_push($data, [
+                'book_id' => $this->id,
+                'category_id' => $category->id
+            ]);
+        }
+
+        BookCategory::insert($data);
+    }
+
+    public function bookCategoriesIdToArray()
+    {
+        return $this->bookCategories->pluck('category_id')->toArray();
     }
 }

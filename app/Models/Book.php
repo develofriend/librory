@@ -92,4 +92,9 @@ class Book extends Model
 
         BookCategory::insert($data);
     }
+
+    public function bookCategoriesIdToArray()
+    {
+        return $this->bookCategories->pluck('category_id')->toArray();
+    }
 }

@@ -49,10 +49,14 @@ class BooksController extends Controller
 
     public function edit(Book $book)
     {
+        $book->load('bookCategories');
+
         $publishers = Publisher::orderByName();
+        $categories = Category::orderByName();
 
         return view('pages.books.edit', compact(
             'publishers',
+            'categories',
             'book'
         ));
     }
@@ -62,6 +66,8 @@ class BooksController extends Controller
         $book->update($request->only([
             'title', 'isbn', 'publisher_id', 'edition', 'volume', 'issue'
         ]));
+
+        $book->linkCategories($request->categories);
 
         return redirect()->route('books.all')
             ->withStatus('Successfully updated book info.');

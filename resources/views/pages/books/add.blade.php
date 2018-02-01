@@ -49,7 +49,7 @@
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="category-{{ $category->id }}"
                                             value="{{ $category->id }}" name="categories[]"
-                                            @if (old('categories') and in_array(old('categories'), $category->id)) checked @endif
+                                            @if (in_array($category->id, old('categories', []))) checked @endif
                                         />
                                         <label class="custom-control-label" for="category-{{ $category->id }}">
                                             {{ $category->name }}

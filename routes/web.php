@@ -82,7 +82,7 @@ Route::prefix('shelves')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Shelves Route
+| Categories Route
 |--------------------------------------------------------------------------
 */
 Route::prefix('categories')->group(function () {
@@ -92,5 +92,20 @@ Route::prefix('categories')->group(function () {
     Route::post('/save', 'CategoriesController@save')->name('categories.save');
     Route::get('/{category}/edit', 'CategoriesController@edit')->name('categories.edit');
     Route::post('/{category}/update', 'CategoriesController@update')->name('categories.update');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Books Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('books')->group(function () {
+
+    Route::get('/all', 'BooksController@all')->name('books.all');
+    Route::get('/add', 'BooksController@add')->name('books.add');
+    Route::post('/save', 'BooksController@save')->name('books.save');
+    Route::get('/{book}/edit', 'BooksController@edit')->name('books.edit');
+    Route::post('/{book}/update', 'BooksController@update')->name('books.update');
 
 });

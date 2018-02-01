@@ -42,6 +42,27 @@
                     <br />
 
                     <div class="form-group">
+                        <label for="b-publisher">Categories</label>
+                        <div class="row">
+                            @foreach ($categories as $category)
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="category-{{ $category->id }}"
+                                            value="{{ $category->id }}" name="categories[]"
+                                            @if (old('categories') and in_array(old('categories'), $category->id)) checked @endif
+                                        />
+                                        <label class="custom-control-label" for="category-{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
                         <label for="b-isbn">ISBN</label>
                         <input type="text" id="b-isbn" name="isbn" class="form-control" required
                             value="{{ old('isbn') }}"

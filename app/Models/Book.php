@@ -39,4 +39,24 @@ class Book extends Model
 
         return $returnQuery ? $query : $query->get();
     }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function editUrl()
+    {
+        return route('books.edit', [
+            'book' => $this->id
+        ]);
+    }
+
+    public function updateUrl()
+    {
+        return route('books.update', [
+            'book' => $this->id
+        ]);
+    }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Add New Book')
+@section('page-title', 'Edit Book')
 
 @section('content')
 <div class="container-fluid">
@@ -13,15 +13,15 @@
                 @include('components.errors')
 
                 <div class="page-header">
-                    <h3>Add New Book</h3>
+                    <h3>Edit Book</h3>
                 </div>
 
-                <form action="{{ route('books.save') }}" method="post" autocomplete="off">
+                <form action="{{ $book->updateUrl() }}" method="post" autocomplete="off">
 
                     <div class="form-group">
                         <label for="b-title">Title</label>
                         <input type="text" id="b-title" name="title" class="form-control" required
-                            value="{{ old('title') }}"
+                            value="{{ old('title', $book->title) }}"
                         />
                     </div>
 
@@ -31,7 +31,7 @@
                             <option></option>
                             @foreach ($publishers as $publisher)
                                 <option value="{{ $publisher->id }}"
-                                    @if (old('publisher_id') == $publisher->id) selected @endif
+                                    @if (old('publisher_id', $book->publisher_id) == $publisher->id) selected @endif
                                 >
                                     {{ $publisher->name }}
                                 </option>
@@ -44,34 +44,34 @@
                     <div class="form-group">
                         <label for="b-isbn">ISBN</label>
                         <input type="text" id="b-isbn" name="isbn" class="form-control" required
-                            value="{{ old('isbn') }}"
+                            value="{{ old('isbn', $book->isbn) }}"
                         />
                     </div>
 
                     <div class="form-group">
                         <label for="b-edition">Edition</label>
                         <input type="text" id="b-edition" name="edition" class="form-control"
-                            value="{{ old('edition') }}"
+                            value="{{ old('edition', $book->edition) }}"
                         />
                     </div>
 
                     <div class="form-group">
                         <label for="b-volume">Volume</label>
                         <input type="text" id="b-volume" name="volume" class="form-control"
-                            value="{{ old('volume') }}"
+                            value="{{ old('volume', $book->volume) }}"
                         />
                     </div>
 
                     <div class="form-group last">
                         <label for="b-issue">Issue</label>
                         <input type="text" id="b-issue" name="issue" class="form-control"
-                            value="{{ old('issue') }}"
+                            value="{{ old('issue', $book->issue) }}"
                         />
                     </div>
 
                     <div class="form-group buttons">
                         <button type="submit" class="btn btn-primary">
-                            Submit
+                            Submit Changes
                         </button>
                         <a href="{{ route('books.all') }}" class="btn btn-link">
                             Cancel

@@ -6,6 +6,7 @@ use Librory\Models\Book;
 use Illuminate\Http\Request;
 use Librory\Models\Publisher;
 use Librory\Http\Requests\AddBookRequest;
+use Librory\Http\Requests\EditBookRequest;
 
 class BooksController extends Controller
 {
@@ -43,11 +44,21 @@ class BooksController extends Controller
 
     public function edit(Book $book)
     {
+        $publishers = Publisher::orderByName();
 
+        return view('pages.books.edit', compact(
+            'publishers',
+            'book'
+        ));
     }
 
-    public function update(Request $request, Book $book)
+    public function update(EditBookRequest $request, Book $book)
     {
+        $book->update($request->only([
+            'title', 'isbn', 'publisher_id', 'edition', 'volume', 'issue'
+        ]));
 
+        return redirect()->route('books.all')
+            ->withStatus('Successfully updated book info.');
     }
 }

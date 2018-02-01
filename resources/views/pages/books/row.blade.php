@@ -5,7 +5,7 @@
         </a>
     </td>
     <td class="text-right">
-        <a href="#">
+        <a href="{{ $book->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
     </td>

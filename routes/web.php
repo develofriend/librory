@@ -105,7 +105,7 @@ Route::prefix('books')->group(function () {
     Route::get('/all', 'BooksController@all')->name('books.all');
     Route::get('/add', 'BooksController@add')->name('books.add');
     Route::post('/save', 'BooksController@save')->name('books.save');
-    Route::get('/{category}/edit', 'BooksController@edit')->name('books.edit');
-    Route::post('/{category}/update', 'BooksController@update')->name('books.update');
+    Route::get('/{book}/edit', 'BooksController@edit')->name('books.edit');
+    Route::post('/{book}/update', 'BooksController@update')->name('books.update');
 
 });

@@ -4,6 +4,8 @@ namespace Librory\Http\Controllers;
 
 use Librory\Models\Book;
 use Illuminate\Http\Request;
+use Librory\Models\Publisher;
+use Librory\Http\Requests\AddBookRequest;
 
 class BooksController extends Controller
 {
@@ -22,12 +24,21 @@ class BooksController extends Controller
 
     public function add()
     {
+        $publishers = Publisher::orderByName();
 
+        return view('pages.books.add', compact(
+            'publishers'
+        ));
     }
 
-    public function save(Request $request)
+    public function save(AddBookRequest $request)
     {
+        $book = Book::create($request->only([
+            'title', 'isbn', 'publisher_id', 'edition', 'volume', 'issue'
+        ]));
 
+        return redirect()->route('books.all')
+            ->withStatus('Successfully created a new book.');
     }
 
     public function edit(Book $book)

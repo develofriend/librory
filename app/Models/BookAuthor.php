@@ -12,4 +12,15 @@ class BookAuthor extends Model
         'book_id',
         'author_id',
     ];
+
+    /**
+     * -------------------------------------------------------------------------
+     * Relationship functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class, 'author_id', 'id');
+    }
 }

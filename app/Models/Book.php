@@ -109,15 +109,15 @@ class Book extends Model
         }
 
         $data = [];
-        foreach ($authors as $author) {
+        foreach ($authors as $name) {
             $author = Author::firstOrCreate([
-                'name' => $author
+                'name' => $name
             ]);
 
-            $data = [
+            array_push($data, [
                 'book_id' => $this->id,
                 'author_id' => $author->id
-            ];
+            ]);
         }
 
         BookAuthor::insert($data);

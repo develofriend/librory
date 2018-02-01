@@ -11,7 +11,9 @@
         @endforeach
     </td>
     <td>
-        {{ $book->publisher->name }}
+        <a href="#">
+            {{ $book->publisher->name }}
+        </a>
     </td>
     <td>
         @foreach ($book->categories as $category)

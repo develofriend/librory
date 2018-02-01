@@ -42,6 +42,7 @@ class BooksController extends Controller
         ]));
 
         $book->linkCategories($request->categories);
+        $book->linkAuthors($request->authors);
 
         return redirect()->route('books.all')
             ->withStatus('Successfully created a new book.');

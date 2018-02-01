@@ -2,6 +2,14 @@
 
 @section('page-title', 'Add New Book')
 
+@section('head-addon')
+<style>
+    .author-field {
+        margin-bottom: 1rem;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -39,8 +47,6 @@
                         </select>
                     </div>
 
-                    <br />
-
                     <div class="form-group">
                         <label for="b-publisher">Categories</label>
                         <div class="row">
@@ -58,6 +64,43 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b-publisher">Author/s</label>
+                        <div class="authors-fields">
+                            @if (old('authors'))
+                                @foreach (old('authors') as $index => $value)
+                                    <div class="author-field" data-count="{{ $index }}">
+                                        @if ($loop->first)
+                                            <input type="text" class="form-control" name="authors[{{ $index }}]"
+                                                required
+                                                value="{{ old('authors.' . $index) }}"
+                                            />
+                                        @else
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="authors[{{ $index }}]"
+                                                    required
+                                                    value="{{ old('authors.' . $index) }}"
+                                                />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary remove-author" type="button">
+                                                            <i class="fas fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="author-field" data-count="1">
+                                    <input type="text" class="form-control" name="authors[1]" required
+                                        value="{{ old('authors.1') }}"
+                                    />
+                                </div>
+                            @endif
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm add-author">Add Author</button>
                     </div>
 
                     <br />
@@ -108,4 +151,46 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer-addon')
+<script>
+$(function () {
+
+    $(document)
+
+    // add authors
+    .on('click', '.add-author', function (e) {
+        e.preventDefault();
+
+        var count = 0;
+        $('.author-field').each(function () {
+            var index = parseInt($(this).data('count'));
+            if (index > count) {
+                count = index;
+            }
+        });
+
+        count++;
+
+        var html = '<div class="author-field" data-count="' + count + '">' +
+            '<div class="input-group">' +
+            '<input type="text" class="form-control" name="authors[' + count + ']" required />' +
+            '<div class="input-group-append">' +
+            '<button class="btn btn-primary remove-author" type="button"><i class="fas fa-minus"></i></button>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        $('.authors-fields').append(html);
+    })
+
+    // remove author
+    .on('click', '.remove-author', function (e) {
+        e.preventDefault();
+        $(this).closest('.author-field').remove();
+    });
+
+});
+</script>
 @endsection

@@ -3,6 +3,7 @@
 namespace Librory\Http\Controllers;
 
 use Librory\Models\Book;
+use Librory\Models\Author;
 use Illuminate\Http\Request;
 use Librory\Models\Category;
 use Librory\Models\Publisher;
@@ -42,6 +43,7 @@ class BooksController extends Controller
         ]));
 
         $book->linkCategories($request->categories);
+        $book->linkAuthors($request->authors);
 
         return redirect()->route('books.all')
             ->withStatus('Successfully created a new book.');
@@ -49,7 +51,7 @@ class BooksController extends Controller
 
     public function edit(Book $book)
     {
-        $book->load('bookCategories');
+        $book->load('bookCategories', 'bookAuthors', 'bookAuthors.author');
 
         $publishers = Publisher::orderByName();
         $categories = Category::orderByName();
@@ -68,6 +70,7 @@ class BooksController extends Controller
         ]));
 
         $book->linkCategories($request->categories);
+        $book->linkAuthors($request->authors);
 
         return redirect()->route('books.all')
             ->withStatus('Successfully updated book info.');

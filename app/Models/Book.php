@@ -32,6 +32,11 @@ class Book extends Model
         return $this->hasMany(BookCategory::class, 'book_id', 'id');
     }
 
+    public function bookAuthors()
+    {
+        return $this->hasMany(BookAuthor::class, 'book_id', 'id');
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Scope functions
@@ -91,6 +96,31 @@ class Book extends Model
         }
 
         BookCategory::insert($data);
+    }
+
+    public function linkAuthors($authors)
+    {
+        if (count($authors) == 0) {
+            return;
+        }
+
+        if (count($this->bookAuthors) > 0) {
+            $this->bookAuthors()->delete();
+        }
+
+        $data = [];
+        foreach ($authors as $name) {
+            $author = Author::firstOrCreate([
+                'name' => $name
+            ]);
+
+            array_push($data, [
+                'book_id' => $this->id,
+                'author_id' => $author->id
+            ]);
+        }
+
+        BookAuthor::insert($data);
     }
 
     public function bookCategoriesIdToArray()

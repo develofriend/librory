@@ -20,7 +20,10 @@ class BooksController extends Controller
 
     public function all()
     {
-        $books = Book::orderByTitle();
+        $books = Book::orderByTitle(true)
+            ->paginate(15);
+
+        $books->load('publisher', 'authors');
 
         return view('pages.books.all', compact('books'));
     }

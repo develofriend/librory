@@ -328,3 +328,37 @@ button:active {
 .bootbox-close-button {
     display: none;
 }
+
+/*  ==========================================================================
+    PAGINATION
+    ========================================================================== */
+.list-pagination {
+    margin-top: 2rem;
+}
+    .list-pagination ul {
+        margin: 0;
+        padding: 0;
+    }
+    .list-pagination ul li {
+        margin: 0 2px 2px 0;
+    }
+    .list-pagination ul li:first-child,
+    .list-pagination ul li:last-child {
+        display: none;
+    }
+    .list-pagination ul li span,
+    .list-pagination ul li a {
+        display: block;
+        line-height: 2rem;
+        width: 2rem;
+        text-align: center;
+        border-radius: .25rem;
+        color: #212529;
+    }
+    .list-pagination ul li.active span {
+        background-color: #d98836;
+        color: #f0deca;
+    }
+    .list-pagination ul li a:hover {
+        background-color: #dee2e6;
+    }

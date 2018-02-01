@@ -32,9 +32,19 @@ class Book extends Model
         return $this->hasMany(BookCategory::class, 'book_id', 'id');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'book_categories', 'book_id', 'category_id');
+    }
+
     public function bookAuthors()
     {
         return $this->hasMany(BookAuthor::class, 'book_id', 'id');
+    }
+
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class, 'book_authors', 'book_id', 'author_id');
     }
 
     /**

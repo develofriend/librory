@@ -69,34 +69,59 @@
                     <div class="form-group">
                         <label for="b-publisher">Author/s</label>
                         <div class="authors-fields">
-                            @forelse ($book->bookAuthors as $bookAuthor)
-                                <div class="author-field" data-count="{{ $bookAuthor->id }}">
-                                    @if ($loop->first)
-                                        <input type="text" class="form-control" name="authors[{{ $bookAuthor->id }}]"
-                                            required
-                                            value="{{ old('authors.' . $bookAuthor->id, $bookAuthor->author->name) }}"
-                                        />
-                                    @else
-                                        <div class="input-group">
+                            @if (old('authors'))
+                                @foreach (old('authors') as $index => $value)
+                                    <div class="author-field" data-count="{{ $index }}">
+                                        @if ($loop->first)
+                                            <input type="text" class="form-control" name="authors[{{ $index }}]"
+                                                required
+                                                value="{{ old('authors.' . $index) }}"
+                                            />
+                                        @else
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="authors[{{ $index }}]"
+                                                    required
+                                                    value="{{ old('authors.' . $index) }}"
+                                                />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary remove-author" type="button">
+                                                            <i class="fas fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            @else
+                                @forelse ($book->bookAuthors as $bookAuthor)
+                                    <div class="author-field" data-count="{{ $bookAuthor->id }}">
+                                        @if ($loop->first)
                                             <input type="text" class="form-control" name="authors[{{ $bookAuthor->id }}]"
                                                 required
                                                 value="{{ old('authors.' . $bookAuthor->id, $bookAuthor->author->name) }}"
                                             />
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary remove-author" type="button">
-                                                        <i class="fas fa-minus"></i>
-                                                </button>
+                                        @else
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="authors[{{ $bookAuthor->id }}]"
+                                                    required
+                                                    value="{{ old('authors.' . $bookAuthor->id, $bookAuthor->author->name) }}"
+                                                />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary remove-author" type="button">
+                                                            <i class="fas fa-minus"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @empty
-                                <div class="author-field" data-count="1">
-                                    <input type="text" class="form-control" name="authors[1]" required
-                                        value="{{ old('authors.1') }}"
-                                    />
-                                </div>
-                            @endforelse
+                                        @endif
+                                    </div>
+                                @empty
+                                    <div class="author-field" data-count="1">
+                                        <input type="text" class="form-control" name="authors[1]" required
+                                            value="{{ old('authors.1') }}"
+                                        />
+                                    </div>
+                                @endforelse
+                            @endif
                         </div>
                         <button type="button" class="btn btn-primary btn-sm add-author">Add Author</button>
                     </div>

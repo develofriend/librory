@@ -107,5 +107,7 @@ Route::prefix('books')->group(function () {
     Route::post('/save', 'BooksController@save')->name('books.save');
     Route::get('/{book}/edit', 'BooksController@edit')->name('books.edit');
     Route::post('/{book}/update', 'BooksController@update')->name('books.update');
+    Route::get('/{book}/count/add', 'BooksController@addCountForm')->name('books.count.add');
+    Route::post('/{book}/count/add', 'BooksController@addCount')->name('books.count.add');
 
 });

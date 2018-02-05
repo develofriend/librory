@@ -4,7 +4,7 @@ namespace Librory\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddBookRequest extends FormRequest
+class AddBookCountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class AddBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'isbn' => 'required|unique:books',
-            'publisher_id' => 'required',
-            'quantity' => 'required|min:1|numeric'
+            'quantity' => 'required|numeric|min:1'
         ];
     }
 }

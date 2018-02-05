@@ -126,10 +126,19 @@
                         />
                     </div>
 
-                    <div class="form-group last">
+                    <div class="form-group">
                         <label for="b-issue">Issue</label>
                         <input type="text" id="b-issue" name="issue" class="form-control"
                             value="{{ old('issue') }}"
+                        />
+                    </div>
+
+                    <br />
+
+                    <div class="form-group last">
+                        <label for="b-quantity">Starting Quantity</label>
+                        <input type="number" id="b-quantity" name="quantity" class="form-control" min="1"
+                            value="{{ old('quantity', 1) }}"
                         />
                     </div>
 

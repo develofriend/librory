@@ -9,6 +9,7 @@ use Librory\Models\Category;
 use Librory\Models\Publisher;
 use Librory\Http\Requests\AddBookRequest;
 use Librory\Http\Requests\EditBookRequest;
+use Librory\Http\Requests\AddBookCountRequest;
 
 class BooksController extends Controller
 {
@@ -78,5 +79,23 @@ class BooksController extends Controller
 
         return redirect()->route('books.all')
             ->withStatus('Successfully updated book info.');
+    }
+
+    public function addCountForm(Book $book)
+    {
+        return response()->json([
+            'view' => view('pages.books.add-count', compact('book'))->render()
+        ]);
+    }
+
+    public function addCount(AddBookCountRequest $request, Book $book)
+    {
+        $book->recordQuantity($request->quantity);
+
+        session()->flash('status', 'Successfully added quantity for ' . $book->title . '.');
+
+        return response()->json([
+            'done' => true
+        ]);
     }
 }

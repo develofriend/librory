@@ -26,5 +26,8 @@
         <a href="{{ $book->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
+        <button type="button" class="acting-as-anchor add-quantity" data-url="{{ $book->addCountUrl() }}">
+            <i class="fas fa-plus fa-fw"></i>
+        </button>
     </td>
 </tr>

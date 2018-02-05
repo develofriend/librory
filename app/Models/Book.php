@@ -100,6 +100,13 @@ class Book extends Model
         ]);
     }
 
+    public function addCountUrl()
+    {
+        return route('books.count.add', [
+            'book' => $this->id
+        ]);
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Unsorted functions

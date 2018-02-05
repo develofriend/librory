@@ -42,7 +42,11 @@
             </table>
 
             <div class="list-pagination">
-                {{ $books->links() }}
+                {{ $books->append([
+                    'author' => request()->author,
+                    'publisher' => request()->publisher,
+                    'category' => request()->category,
+                ])->links() }}
             </div>
 
         </div>

@@ -21,9 +21,23 @@ class BooksController extends Controller
 
     public function all()
     {
-        $books = Book::orderByTitle(true)
-            ->paginate(15);
+        $books = Book::select('books.*')->orderByTitle(true);
 
+        if (request()->has('author') and ! is_null(request()->author)) {
+            $books = $books->leftJoin('book_authors', 'books.id', '=', 'book_authors.book_id')
+                ->where('book_authors.author_id', request()->author);
+        }
+
+        if (request()->has('category') and ! is_null(request()->category)) {
+            $books = $books->leftJoin('book_categories', 'books.id', '=', 'book_categories.book_id')
+                ->where('book_categories.category_id', request()->category);
+        }
+
+        if (request()->has('publisher') and ! is_null(request()->publisher)) {
+            $books = $books->where('books.publisher_id', request()->publisher);
+        }
+
+        $books = $books->paginate(15);
         $books->load('publisher', 'authors', 'counts');
 
         return view('pages.books.all', compact('books'));

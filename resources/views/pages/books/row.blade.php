@@ -7,18 +7,18 @@
     <td>
         @foreach ($book->authors as $author)
             @if (! $loop->first), @endif
-            <a href="#">{{ $author->name }}</a>
+            <a href="{{ request()->url() }}?author={{ $author->id }}">{{ $author->name }}</a>
         @endforeach
     </td>
     <td>
-        <a href="#">
+        <a href="{{ request()->url() }}?publisher={{ $book->publisher->id }}">
             {{ $book->publisher->name }}
         </a>
     </td>
     <td>
         @foreach ($book->categories as $category)
             @if (! $loop->first), @endif
-            <a href="#">{{ $category->name }}</a>
+            <a href="{{ request()->url() }}?category={{ $category->id }}">{{ $category->name }}</a>
         @endforeach
     </td>
     <td>{{ $book->total_count }}</td>

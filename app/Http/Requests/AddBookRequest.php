@@ -26,7 +26,8 @@ class AddBookRequest extends FormRequest
         return [
             'title' => 'required',
             'isbn' => 'required|unique:books',
-            'publisher_id' => 'required'
+            'publisher_id' => 'required',
+            'quantity' => 'required|min:1|numeric'
         ];
     }
 }

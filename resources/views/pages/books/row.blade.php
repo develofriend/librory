@@ -21,6 +21,7 @@
             <a href="#">{{ $category->name }}</a>
         @endforeach
     </td>
+    <td>{{ $book->total_count }}</td>
     <td class="text-right">
         <a href="{{ $book->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>

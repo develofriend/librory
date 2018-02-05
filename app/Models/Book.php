@@ -47,6 +47,26 @@ class Book extends Model
         return $this->belongsToMany(Author::class, 'book_authors', 'book_id', 'author_id');
     }
 
+    public function counts()
+    {
+        return $this->hasMany(BookCount::class, 'book_id', 'id');
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Accessor functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function getTotalCountAttribute()
+    {
+        if (count($this->counts) > 0) {
+            return $this->counts()->sum('quantity');
+        }
+
+        return 0;
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Scope functions
@@ -136,5 +156,17 @@ class Book extends Model
     public function bookCategoriesIdToArray()
     {
         return $this->bookCategories->pluck('category_id')->toArray();
+    }
+
+    public function recordQuantity($quantity)
+    {
+        if ($quantity <= 0) {
+            return;
+        }
+
+        BookCount::create([
+            'book_id' => $this->id,
+            'quantity' => $quantity
+        ]);
     }
 }

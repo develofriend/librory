@@ -23,7 +23,7 @@ class BooksController extends Controller
         $books = Book::orderByTitle(true)
             ->paginate(15);
 
-        $books->load('publisher', 'authors');
+        $books->load('publisher', 'authors', 'counts');
 
         return view('pages.books.all', compact('books'));
     }
@@ -47,6 +47,7 @@ class BooksController extends Controller
 
         $book->linkCategories($request->categories);
         $book->linkAuthors($request->authors);
+        $book->recordQuantity($request->quantity);
 
         return redirect()->route('books.all')
             ->withStatus('Successfully created a new book.');

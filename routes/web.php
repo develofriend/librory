@@ -111,3 +111,14 @@ Route::prefix('books')->group(function () {
     Route::post('/{book}/count/add', 'BooksController@addCount')->name('books.count.add');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Borrow Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('borrowed-book')->group(function () {
+
+    Route::get('/all', 'BorrowedBooksController@all')->name('borrow.all');
+
+});

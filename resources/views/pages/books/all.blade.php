@@ -42,7 +42,7 @@
             </table>
 
             <div class="list-pagination">
-                {{ $books->append([
+                {{ $books->appends([
                     'author' => request()->author,
                     'publisher' => request()->publisher,
                     'category' => request()->category,

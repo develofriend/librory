@@ -2,8 +2,11 @@
 
 namespace Librory\Http\Controllers;
 
+use Librory\Models\Book;
+use Librory\Models\User;
 use Librory\Models\Borrow;
 use Illuminate\Http\Request;
+use Librory\Http\Requests\NewBorrowRequest;
 
 class BorrowedBooksController extends Controller
 {
@@ -20,5 +23,40 @@ class BorrowedBooksController extends Controller
         return view('pages.borrows.all', compact(
             'borrowedBooks'
         ));
+    }
+
+    public function new(User $user)
+    {
+        if (! $user->id) {
+            $members = User::members(true)
+                ->orderBy('last_name')
+                ->get();
+
+            return view('pages.borrows.select-member', compact(
+                'members'
+            ));
+        }
+
+        return view('pages.borrows.new', compact(
+            'user'
+        ));
+    }
+
+    public function save(NewBorrowRequest $request, User $user)
+    {
+        dd($request->all());
+    }
+
+    public function fetchBooks()
+    {
+        $books = Book::orderByTitle();
+        $books->load('authors', 'counts');
+
+        return response()->json([
+            'count' => count($books),
+            'list' => view('pages.borrows.books-list', compact(
+                'books'
+            ))->render()
+        ]);
     }
 }

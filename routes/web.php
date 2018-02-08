@@ -109,7 +109,6 @@ Route::prefix('books')->group(function () {
     Route::post('/{book}/update', 'BooksController@update')->name('books.update');
     Route::get('/{book}/count/add', 'BooksController@addCountForm')->name('books.count.add');
     Route::post('/{book}/count/add', 'BooksController@addCount')->name('books.count.add');
-
 });
 
 /*
@@ -120,5 +119,9 @@ Route::prefix('books')->group(function () {
 Route::prefix('borrowed-book')->group(function () {
 
     Route::get('/all', 'BorrowedBooksController@all')->name('borrow.all');
+    Route::get('/new/{user?}', 'BorrowedBooksController@new')->name('borrow.new');
+    Route::post('/save/{user}', 'BorrowedBooksController@save')->name('borrow.save');
+
+    Route::get('/books/fetch', 'BorrowedBooksController@fetchBooks')->name('borrow.books.fetch');
 
 });

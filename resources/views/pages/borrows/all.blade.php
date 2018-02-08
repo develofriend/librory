@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-actions">
-                <a href="{{ route('books.add') }}" class="btn btn-primary">
+                <a href="{{ route('borrow.new') }}" class="btn btn-primary">
                     New Borrow
                 </a>
             </div>

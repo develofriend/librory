@@ -90,6 +90,13 @@ class User extends Authenticatable
         ]);
     }
 
+    public function newBorrowBookUrl()
+    {
+        return route('borrow.new', [
+            'user' => $this->id
+        ]);
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Unsorted functions

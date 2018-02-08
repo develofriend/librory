@@ -30,6 +30,10 @@ body {
     padding: 1.875rem 0;
 }
 
+.text-primary {
+    color: #d98836!important;
+}
+
 .page-actions,
 .page-header {
     margin-bottom: 2rem;

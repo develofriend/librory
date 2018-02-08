@@ -18,7 +18,9 @@ class BorrowedBooksController extends Controller
 
     public function all()
     {
-        $borrowedBooks = Borrow::latest()->paginate(15);
+        $borrowedBooks = Borrow::withCount('books')
+            ->latest()
+            ->paginate(15);
 
         return view('pages.borrows.all', compact(
             'borrowedBooks'
@@ -44,7 +46,16 @@ class BorrowedBooksController extends Controller
 
     public function save(NewBorrowRequest $request, User $user)
     {
-        dd($request->all());
+        $borrowedBook = Borrow::create([
+            'user_id' => $user->id,
+            'librorian_id' => auth()->id(),
+            'return_date' => $request->return_date
+        ]);
+
+        $borrowedBook->linkBooks($request->books);
+
+        return redirect()->route('borrow.all')
+            ->withStatus('Success!');
     }
 
     public function fetchBooks()

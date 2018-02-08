@@ -13,6 +13,7 @@
         {{ $borrowedBook->return_date->format('F j, Y') }}
     </td>
     <td>
-        {{ $borrowedBook->status }}
+        {{ ucwords($borrowedBook->status) }}
     </td>
+    <td class="text-right"></td>
 </tr>

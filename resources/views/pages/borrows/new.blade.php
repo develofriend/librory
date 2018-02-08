@@ -29,7 +29,7 @@
                     <label for="b-return-date">Return Date</label>
                     <input type="date" id="b-return-date" name="return_date"
                         class="form-control" required
-                        min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                        min="{{ \Carbon\Carbon::now()->addDay()->format('Y-m-d') }}"
                         value="{{ old('return_date') }}"
                     />
                 </div>

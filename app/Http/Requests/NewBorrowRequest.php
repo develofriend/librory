@@ -2,6 +2,7 @@
 
 namespace Librory\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NewBorrowRequest extends FormRequest
@@ -14,6 +15,22 @@ class NewBorrowRequest extends FormRequest
     public function authorize()
     {
         return auth()->check() and auth()->user()->isLibrorian();
+    }
+
+    /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData()
+    {
+        try {
+            $this['return_date'] = Carbon::parse($this->return_date);
+        } catch (\Exception $e) {
+            $this['return_date'] = null;
+        }
+
+        return $this->all();
     }
 
     /**

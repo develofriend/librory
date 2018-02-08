@@ -3,8 +3,8 @@
         @if ($book->total_count > 0)
             <li class="list-group-item">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="book-{{ $book->id }}"
-                        value="{{ $book->id }}" name="books[]"
+                    <input type="checkbox" class="custom-control-input"
+                        id="book-{{ $book->id }}" value="{{ $book->id }}" name="books[]"
                     />
                     <label class="custom-control-label d-block" for="book-{{ $book->id }}">
                         <span class="float-right ml-3">

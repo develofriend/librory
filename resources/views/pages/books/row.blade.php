@@ -22,7 +22,7 @@
         @endforeach
     </td>
     <td>{{ $book->total_count }}</td>
-    <td class="text-right">
+    <td class="text-right text-nowrap">
         <a href="{{ $book->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>

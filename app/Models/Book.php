@@ -52,6 +52,11 @@ class Book extends Model
         return $this->hasMany(BookCount::class, 'book_id', 'id');
     }
 
+    public function borrowed()
+    {
+        return $this->hasMany(BorrowedBook::class, 'book_id', 'id');
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Accessor functions
@@ -61,10 +66,25 @@ class Book extends Model
     public function getTotalCountAttribute()
     {
         if (count($this->counts) > 0) {
-            return $this->counts()->sum('quantity');
+            $totalCount = $this->counts()->sum('quantity');
+            $totalCount -= $this->total_unreturned;
+
+            return $totalCount;
         }
 
         return 0;
+    }
+
+    public function getTotalUnreturnedAttribute()
+    {
+        $unreturnedCount = 0;
+        foreach ($this->borrowed as $borrowed) {
+            if ($borrowed->borrow->status === 'unreturned') {
+                $unreturnedCount++;
+            }
+        }
+
+        return $unreturnedCount;
     }
 
     /**

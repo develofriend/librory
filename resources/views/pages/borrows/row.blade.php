@@ -15,5 +15,12 @@
     <td>
         {{ ucwords($borrowedBook->status) }}
     </td>
-    <td class="text-right"></td>
+    <td class="text-right">
+        <a href="#">
+            <i class="fas fa-pencil-alt fa-fw"></i>
+        </a>
+        <a href="#">
+            <i class="fas fa-ellipsis-h fa-fw"></i>
+        </a>
+    </td>
 </tr>

@@ -59,6 +59,9 @@ class Borrow extends Model
 
         $data = [];
         foreach ($books as $book) {
+            if ($book->total_count == 0) {
+                continue;
+            }
             array_push($data, [
                 'borrow_id' => $this->id,
                 'book_id' => $book->id

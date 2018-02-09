@@ -61,7 +61,7 @@ class BorrowedBooksController extends Controller
     public function fetchBooks()
     {
         $books = Book::orderByTitle();
-        $books->load('authors', 'counts');
+        $books->load('authors', 'counts', 'borrowed', 'borrowed.borrow');
 
         return response()->json([
             'count' => count($books),

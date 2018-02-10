@@ -24,7 +24,8 @@
                         <th scope="col">Authors</th>
                         <th scope="col">Publisher</th>
                         <th scope="col">Categories</th>
-                        <th scope="col">Qty</th>
+                        <th scope="col">Avail.</th>
+                        <th scope="col">Qty.</th>
                         <th class="text-right">&nbsp;</th>
                     </tr>
                 </thead>

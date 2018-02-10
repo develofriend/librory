@@ -10,7 +10,9 @@
         </a>
     </td>
     <td>
-        {{ ucwords($borrowedBook->status) }}
+        <span class="badge badge-{{ $borrowedBook->status_class }}">
+            {{ ucwords($borrowedBook->status) }}
+        </span>
     </td>
     <td>
         {{ $borrowedBook->return_date->format('F j, Y') }}

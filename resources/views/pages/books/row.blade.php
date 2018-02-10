@@ -21,6 +21,7 @@
             <a href="{{ request()->url() }}?category={{ $category->id }}">{{ $category->name }}</a>
         @endforeach
     </td>
+    <td>{{ $book->total_available }}</td>
     <td>{{ $book->total_count }}</td>
     <td class="text-right text-nowrap">
         <a href="{{ $book->editUrl() }}">

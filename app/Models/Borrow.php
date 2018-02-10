@@ -61,6 +61,21 @@ class Borrow extends Model
         return [];
     }
 
+    public function getStatusClassAttribute()
+    {
+        switch ($this->status) {
+            case 'unreturned':
+                return 'warning';
+                break;
+            case 'returned':
+                return 'success';
+                break;
+            case 'overdue':
+                return 'danger';
+                break;
+        }
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Route functions

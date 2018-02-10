@@ -14,7 +14,7 @@ class AddDateReturnedAttribute extends Migration
     public function up()
     {
         Schema::table('borrows', function (Blueprint $table) {
-            $table->dateTime('date_returned');
+            $table->dateTime('date_returned')->nullable();
         });
     }
 

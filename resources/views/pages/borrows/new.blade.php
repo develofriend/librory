@@ -10,7 +10,7 @@
 
             <div class="page-header">
                 <h5>Member's Info</h5>
-                <h2>{{ $user->name }}</h2>
+                <h2 class="font-weight-bold">{{ $user->name }}</h2>
 
                 <article class="pt-2">
                     {{ $user->contact_number }} &middot; {{ $user->email }}

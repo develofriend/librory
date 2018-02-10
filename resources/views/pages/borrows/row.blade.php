@@ -5,7 +5,7 @@
         </a>
     </td>
     <td>
-        <a href="#">
+        <a href="{{ $borrowedBook->detailsUrl() }}">
             {{ $borrowedBook->books_count }}
         </a>
     </td>
@@ -20,7 +20,7 @@
         <a href="{{ $borrowedBook->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
-        <a href="#">
+        <a href="{{ $borrowedBook->detailsUrl() }}">
             <i class="fas fa-ellipsis-h fa-fw"></i>
         </a>
     </td>

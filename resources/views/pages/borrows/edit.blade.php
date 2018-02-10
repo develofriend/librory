@@ -10,7 +10,7 @@
 
             <div class="page-header">
                 <h5>Member's Info</h5>
-                <h2>{{ $user->name }}</h2>
+                <h2 class="font-weight-bold">{{ $user->name }}</h2>
 
                 <article class="pt-2">
                     {{ $user->contact_number }} &middot; {{ $user->email }}
@@ -40,7 +40,7 @@
 
                 <div class="form-group buttons">
                     <button type="submit" class="btn btn-primary">Submit Changes</button>
-                    <a href="{{ route('borrow.all') }}" class="btn btn-link">Cancel</a>
+                    <a href="{{ $borrow->detailsUrl() }}" class="btn btn-link">Cancel</a>
                 </div>
 
             {!! csrf_field() !!}

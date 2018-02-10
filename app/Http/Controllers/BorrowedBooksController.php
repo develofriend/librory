@@ -28,6 +28,15 @@ class BorrowedBooksController extends Controller
         ));
     }
 
+    public function details(Borrow $borrow)
+    {
+        $borrow->load('user', 'books', 'librorian');
+
+        return view('pages.borrows.details', compact(
+            'borrow'
+        ));
+    }
+
     public function new(User $user)
     {
         if (! $user->id) {

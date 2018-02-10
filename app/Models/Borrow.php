@@ -64,6 +64,13 @@ class Borrow extends Model
      * -------------------------------------------------------------------------
      */
 
+    public function detailsUrl()
+    {
+        return route('borrow.details', [
+            'borrow' => $this->id
+        ]);
+    }
+
     public function editUrl()
     {
         return route('borrow.edit', [

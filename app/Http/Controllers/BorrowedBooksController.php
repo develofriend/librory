@@ -7,6 +7,7 @@ use Librory\Models\User;
 use Librory\Models\Borrow;
 use Illuminate\Http\Request;
 use Librory\Http\Requests\NewBorrowRequest;
+use Librory\Http\Requests\EditBorrowRequest;
 
 class BorrowedBooksController extends Controller
 {
@@ -58,15 +59,44 @@ class BorrowedBooksController extends Controller
             ->withStatus('Success!');
     }
 
+    public function edit(Borrow $borrow)
+    {
+        $user = $borrow->user;
+        $borrow->load('books');
+
+        return view('pages.borrows.edit', compact(
+            'borrow',
+            'user'
+        ));
+    }
+
+    public function update(EditBorrowRequest $request, Borrow $borrow)
+    {
+        $borrow->update([
+            'return_date' => $request->return_date
+        ]);
+
+        $borrow->linkBooks($request->books);
+
+        return redirect()->route('borrow.all')
+            ->withStatus('Updated successfully!');
+    }
+
     public function fetchBooks()
     {
         $books = Book::orderByTitle();
         $books->load('authors', 'counts', 'borrowed', 'borrowed.borrow');
 
+        $ids = [];
+        if (request()->has('books') and ! is_null(request()->books)) {
+            $ids = explode(',', request()->books);
+        }
+
         return response()->json([
             'count' => count($books),
             'list' => view('pages.borrows.books-list', compact(
-                'books'
+                'books',
+                'ids'
             ))->render()
         ]);
     }

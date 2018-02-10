@@ -5,6 +5,7 @@
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input"
                         id="book-{{ $book->id }}" value="{{ $book->id }}" name="books[]"
+                        @if (in_array($book->id, $ids)) checked @endif
                     />
                     <label class="custom-control-label d-block" for="book-{{ $book->id }}">
                         <span class="float-right ml-3">

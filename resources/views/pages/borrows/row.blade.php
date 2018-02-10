@@ -10,13 +10,14 @@
         </a>
     </td>
     <td>
-        {{ $borrowedBook->return_date->format('F j, Y') }}
-    </td>
-    <td>
         {{ ucwords($borrowedBook->status) }}
     </td>
+    <td>
+        {{ $borrowedBook->return_date->format('F j, Y') }}
+    </td>
+    <td></td>
     <td class="text-right">
-        <a href="#">
+        <a href="{{ $borrowedBook->editUrl() }}">
             <i class="fas fa-pencil-alt fa-fw"></i>
         </a>
         <a href="#">

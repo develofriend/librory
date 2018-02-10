@@ -22,8 +22,9 @@
                     <tr>
                         <th scope="col">Member</th>
                         <th scope="col">Books</th>
-                        <th scope="col">Return Date</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Date Returned</th>
                         <th class="text-right">&nbsp;</th>
                     </tr>
                 </thead>

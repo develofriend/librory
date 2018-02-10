@@ -45,6 +45,26 @@ class Borrow extends Model
 
     /**
      * -------------------------------------------------------------------------
+     * Route functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function editUrl()
+    {
+        return route('borrow.edit', [
+            'borrow' => $this->id
+        ]);
+    }
+
+    public function updateUrl()
+    {
+        return route('borrow.update', [
+            'borrow' => $this->id
+        ]);
+    }
+
+    /**
+     * -------------------------------------------------------------------------
      * Unsorted functions
      * -------------------------------------------------------------------------
      */

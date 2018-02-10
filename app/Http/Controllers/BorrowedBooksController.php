@@ -92,10 +92,17 @@ class BorrowedBooksController extends Controller
             $ids = explode(',', request()->books);
         }
 
+        $borrow = null;
+        if (request()->has('borrow') and ! is_null(request()->borrow)) {
+            $borrow = Borrow::find(request()->borrow);
+            $borrow->load('books');
+        }
+
         return response()->json([
             'count' => count($books),
             'list' => view('pages.borrows.books-list', compact(
                 'books',
+                'borrow',
                 'ids'
             ))->render()
         ]);

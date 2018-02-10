@@ -66,10 +66,7 @@ class Book extends Model
     public function getTotalCountAttribute()
     {
         if (count($this->counts) > 0) {
-            $totalCount = $this->counts()->sum('quantity');
-            $totalCount -= $this->total_unreturned;
-
-            return $totalCount;
+            return $this->counts()->sum('quantity');
         }
 
         return 0;
@@ -85,6 +82,11 @@ class Book extends Model
         }
 
         return $unreturnedCount;
+    }
+
+    public function getTotalAvailableAttribute()
+    {
+        return $this->total_count - $this->total_unreturned;
     }
 
     /**

@@ -20,7 +20,11 @@
             <form action="{{ $borrow->updateUrl() }}" method="post" autocomplete="off">
 
                 <div class="fixed-sidebar">
-                    <div id="books-list" data-url="{{ route('borrow.books.fetch') }}?books={{ implode(',', $borrow->books->pluck('id')->toArray()) }}">
+                    <div id="books-list"
+                        data-url="{{ route('borrow.books.fetch', [
+                            'borrow' => $borrow->id,
+                            'books' => implode(',', $borrow->book_ids)
+                        ]) }}">
                         <i class="fas fa-circle-notch fa-spin text-primary"></i>&nbsp; Fetching Books
                     </div>
                 </div>

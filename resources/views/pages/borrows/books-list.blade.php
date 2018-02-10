@@ -1,6 +1,12 @@
 <ul class="list-group">
     @forelse ($books as $book)
-        @if ($book->total_count > 0)
+        @php
+            $availableQuantity = $book->total_available;
+            if (isset($borrow) and $borrow and $borrow->has($book)) {
+                $availableQuantity++;
+            }
+        @endphp
+        @if ($availableQuantity > 0)
             <li class="list-group-item">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input"
@@ -9,7 +15,7 @@
                     />
                     <label class="custom-control-label d-block" for="book-{{ $book->id }}">
                         <span class="float-right ml-3">
-                            <strong>{{ $book->total_count }}</strong>
+                            <strong>{{ $availableQuantity }}</strong>
                         </span>
                         <span class="text-primary">
                             {{ $book->title }}

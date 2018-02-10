@@ -35,12 +35,27 @@ class Borrow extends Model
 
     public function borrowedBooks()
     {
-        return $this->hasMany(BorrowedBook::class, 'book_id', 'id');
+        return $this->hasMany(BorrowedBook::class, 'borrow_id', 'id');
     }
 
     public function books()
     {
         return $this->belongsToMany(Book::class, 'borrowed_books', 'borrow_id', 'book_id');
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Accessor functions
+     * -------------------------------------------------------------------------
+     */
+
+    public function getBookIdsAttribute()
+    {
+        if (count($this->books) > 0) {
+            return $this->books->pluck('id')->toArray();
+        }
+
+        return [];
     }
 
     /**
@@ -89,5 +104,10 @@ class Borrow extends Model
         }
 
         BorrowedBook::insert($data);
+    }
+
+    public function has($book)
+    {
+        return in_array($book->id, $this->book_ids);
     }
 }

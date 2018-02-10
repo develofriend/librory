@@ -17,4 +17,113 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Members Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('members')->group(function () {
+
+    Route::get('/all', 'UsersController@allMembers')->name('members.all');
+    Route::get('/add', 'UsersController@addMember')->name('members.add');
+    Route::post('/save', 'UsersController@saveMember')->name('members.save');
+    Route::get('/{member}/edit', 'UsersController@editMember')->name('members.edit');
+    Route::post('/{member}/update', 'UsersController@updateMember')->name('members.update');
+    Route::post('/{member}/switch-status', 'UsersController@switchMemberStatus')->name('members.status.switch');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Publishers Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('publishers')->group(function () {
+
+    Route::get('/all', 'PublishersController@all')->name('publishers.all');
+    Route::get('/add', 'PublishersController@add')->name('publishers.add');
+    Route::post('/save', 'PublishersController@save')->name('publishers.save');
+    Route::get('/{publisher}/edit', 'PublishersController@edit')->name('publishers.edit');
+    Route::post('/{publisher}/update', 'PublishersController@update')->name('publishers.update');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Authors Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('authors')->group(function () {
+
+    Route::get('/all', 'AuthorsController@all')->name('authors.all');
+    Route::get('/add', 'AuthorsController@add')->name('authors.add');
+    Route::post('/save', 'AuthorsController@save')->name('authors.save');
+    Route::get('/{author}/edit', 'AuthorsController@edit')->name('authors.edit');
+    Route::post('/{author}/update', 'AuthorsController@update')->name('authors.update');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Shelves Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('shelves')->group(function () {
+
+    Route::get('/all', 'ShelvesController@all')->name('shelves.all');
+    Route::get('/add', 'ShelvesController@add')->name('shelves.add');
+    Route::post('/save', 'ShelvesController@save')->name('shelves.save');
+    Route::get('/{shelf}/edit', 'ShelvesController@edit')->name('shelves.edit');
+    Route::post('/{shelf}/update', 'ShelvesController@update')->name('shelves.update');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Categories Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('categories')->group(function () {
+
+    Route::get('/all', 'CategoriesController@all')->name('categories.all');
+    Route::get('/add', 'CategoriesController@add')->name('categories.add');
+    Route::post('/save', 'CategoriesController@save')->name('categories.save');
+    Route::get('/{category}/edit', 'CategoriesController@edit')->name('categories.edit');
+    Route::post('/{category}/update', 'CategoriesController@update')->name('categories.update');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Books Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('books')->group(function () {
+
+    Route::get('/all', 'BooksController@all')->name('books.all');
+    Route::get('/add', 'BooksController@add')->name('books.add');
+    Route::post('/save', 'BooksController@save')->name('books.save');
+    Route::get('/{book}/edit', 'BooksController@edit')->name('books.edit');
+    Route::post('/{book}/update', 'BooksController@update')->name('books.update');
+    Route::get('/{book}/count/add', 'BooksController@addCountForm')->name('books.count.add');
+    Route::post('/{book}/count/add', 'BooksController@addCount')->name('books.count.add');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Borrow Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('borrowed-book')->group(function () {
+
+    Route::get('/all', 'BorrowedBooksController@all')->name('borrow.all');
+    Route::get('/new/{user?}', 'BorrowedBooksController@new')->name('borrow.new');
+    Route::post('/save/{user}', 'BorrowedBooksController@save')->name('borrow.save');
+    Route::get('/edit/{borrow}', 'BorrowedBooksController@edit')->name('borrow.edit');
+    Route::post('/update/{borrow}', 'BorrowedBooksController@update')->name('borrow.update');
+
+    Route::get('/books/fetch', 'BorrowedBooksController@fetchBooks')->name('borrow.books.fetch');
+
+});

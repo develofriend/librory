@@ -1,0 +1,368 @@
+/*  ==========================================================================
+    GLOBAL
+    ========================================================================== */
+body {
+    font-family: 'Nunito', sans-serif;
+    padding-top: 54px;
+}
+
+::-moz-selection {
+    background: #d98836;
+    color: #ffffff;
+    text-shadow: none;
+}
+::selection {
+    background: #d98836;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#content {
+    padding: 1.875rem 0;
+}
+
+.text-primary {
+    color: #d98836!important;
+}
+
+.page-actions,
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.acting-as-anchor {
+    color: #d98836;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.alert[data-notify="container"] {
+    width: auto!important;
+    max-width: 200px;
+    padding-left: 20px;
+    padding-right: 36px;
+    cursor: pointer;
+    z-index: 1080!important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    .alert[data-notify="container"].alert-success {
+        background-color: #d98836;
+        color: #f0deca;
+    }
+    .alert[data-notify="container"].alert-success button.close {
+        text-shadow: none;
+        color: #f0deca;
+    }
+
+/*  ==========================================================================
+    OVERRIDES
+    ========================================================================== */
+a {
+    color: #d98836;
+    transition-duration: .2s;
+}
+a:hover,
+a:focus,
+a:active {
+    color: #c37a30;
+    text-decoration: none;
+}
+
+button:hover,
+button:focus,
+button:active {
+    outline: 0;
+    box-shadow: none;
+}
+
+.bg-librory {
+    background: #5e3926;
+}
+
+/*  ==========================================================================
+    TABLES
+    ========================================================================== */
+.table-bb {
+    border-bottom: 1px solid #dee2e6;
+}
+.table-bb thead tr th {
+    border-width: 1px;
+    background-color: #fbfbfb;
+}
+
+.table tr.inactive-member a {
+    color: #6c757d;
+}
+
+/*  ==========================================================================
+    BUTTONS
+    ========================================================================== */
+.btn:focus,
+.btn.focus {
+    outline: 0!important;
+    box-shadow: none!important;
+}
+
+.btn-primary {
+    background-color: #d98836;
+    border-color: #d98836;
+    color: #f0deca;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:target,
+.btn-primary:active,
+.btn-primary:active:focus,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: #c37a30;
+    border-color: #c37a30;
+    color: #f0deca;
+}
+
+.btn-link {
+    color: #5e3926;
+}
+
+.btn-link:hover {
+    color: #c37a30;
+    text-decoration: none;
+}
+
+/*  ==========================================================================
+    FORMS
+    ========================================================================== */
+.form-container {
+    max-width: 700px;
+    width: 100%;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    outline: 0;
+    border-color: #5e3926;
+}
+
+.form-group label {
+    cursor: pointer;
+}
+
+.form-group.last {
+    margin-bottom: 0;
+}
+.form-group.buttons {
+    margin-top: 1.875rem;
+    margin-bottom: 0;
+}
+
+.custom-control-label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.custom-control-label::before {
+    background-color: #dee2e6!important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before,
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #d98836!important;
+}
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none;
+}
+
+/*  ==========================================================================
+    ALERTS
+    ========================================================================== */
+.alert {
+    border: 0;
+}
+    .alert ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .alert ul li {
+        display: block;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .alert ul li svg {
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+    }
+
+/*  ==========================================================================
+    CARDS
+    ========================================================================== */
+.card-body h5.card-title {
+    font-weight: 700;
+}
+
+/*  ==========================================================================
+    NAVBAR
+    ========================================================================== */
+.navbar-librory .navbar-brand{
+    color: #f0deca;
+    font-weight: 700;
+}
+
+.navbar-librory .navbar-nav .nav-link {
+    color: #f0deca;
+}
+
+/*  ==========================================================================
+    ALT NAV + LIBRORY NAV
+    ========================================================================== */
+#nav-alt {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 54px;
+    background-color: #5e3926;
+    z-index: 300;
+}
+
+    .nav-trigger {
+        height: 54px;
+        width: 54px;
+        border: 0;
+        background-color: transparent;
+        color: #d98836;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .nav-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(52, 28, 15, .7);
+        z-index: 400;
+        cursor: pointer;
+    }
+
+    .upanel-wrap ul {
+        display: block;
+        margin: 0;
+        padding: 0 15px;
+    }
+    .upanel-wrap ul li {
+        display: block;
+    }
+    .upanel-wrap ul li > a {
+        line-height: 24px;
+        padding: 15px 0;
+        display: block;
+        color: #d98836;
+        transition-duration: 0s;
+    }
+
+.librory-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -100px;
+    width: 100px;
+    background-color: #755036;
+    z-index: 500;
+}
+    body.show-nav .librory-nav {
+        left: 0;
+    }
+
+    .librory-nav ul {
+        margin: 0;
+        padding: 0;
+    }
+    .librory-nav ul li {
+        display: block;
+    }
+    .librory-nav ul li > a {
+        padding: 25px 0;
+        color: #f0deca;
+        text-align: center;
+        display: block;
+        overflow: hidden;
+    }
+    .librory-nav ul li span {
+        margin: 0 auto;
+        display: block;
+        line-height: 22px;
+        font-size: 0.875rem;
+        margin-top: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 90px;
+    }
+    .librory-nav ul li > a:hover {
+        background-color: #5e3926;
+    }
+
+/*  ==========================================================================
+    MODALS X BOOTBOX
+    ========================================================================== */
+.bootbox-close-button {
+    display: none;
+}
+
+/*  ==========================================================================
+    PAGINATION
+    ========================================================================== */
+.list-pagination {
+    margin-top: 2rem;
+}
+    .list-pagination ul {
+        margin: 0;
+        padding: 0;
+    }
+    .list-pagination ul li {
+        margin: 0 2px 2px 0;
+    }
+    .list-pagination ul li:first-child,
+    .list-pagination ul li:last-child {
+        display: none;
+    }
+    .list-pagination ul li span,
+    .list-pagination ul li a {
+        display: block;
+        line-height: 2rem;
+        width: 2rem;
+        text-align: center;
+        border-radius: .25rem;
+        color: #212529;
+    }
+    .list-pagination ul li.active span {
+        background-color: #d98836;
+        color: #f0deca;
+    }
+    .list-pagination ul li a:hover {
+        background-color: #dee2e6;
+    }

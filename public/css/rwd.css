@@ -1,0 +1,105 @@
+/*  ==========================================================================
+    SM // SMALL // TABLET
+    ========================================================================== */
+@media (min-width: 768px) {
+
+
+
+}
+
+/*  ==========================================================================
+    MD // MEDIUM // SMALL DEKSTOP
+    ========================================================================== */
+@media (min-width: 992px) {
+
+    #content {
+        padding: 1.875rem 0.9375rem;
+    }
+
+    body.auth-body {
+        padding-top: 0;
+    }
+
+    body.auth-body {
+        padding-left: 100px;
+    }
+
+    body.w-fixed-sidebar {
+        padding-right: 320px;
+    }
+
+    nav.librory-nav {
+        top: 100px;
+        left: 0;
+    }
+
+    #nav-alt {
+        width: 100px;
+        left: 0;
+        height: 100px;
+        z-index: 520;
+    }
+
+    .nav-backdrop {
+        display: none;
+    }
+
+    .upanel-wrap {
+        width: 100%;
+    }
+    .upanel-wrap ul {
+        padding: 0;
+        width: 100%;
+    }
+    .upanel-wrap ul li > a {
+        text-align: center;
+        padding: 25px 0;
+        color: #f0deca;
+        background-color: #d98836;
+    }
+    .upanel-wrap ul li span {
+        margin: 0 auto;
+        display: block;
+        line-height: 22px;
+        font-size: 0.875rem;
+        margin-top: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 90px;
+    }
+
+    .alert[data-notify="container"] {
+        max-width: 400px;
+    }
+
+    .fixed-sidebar {
+        position: fixed;
+        width: 320px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        padding: 1.875rem;
+        background-color: #fbfbfb;
+    }
+
+}
+
+/*  ==========================================================================
+    LG // LARGE // LARGE DEKSTOP
+    ========================================================================== */
+@media (min-width: 1200px) {
+
+
+
+}
+
+/*  ==========================================================================
+    CUSTOM
+    ========================================================================== */
+@media (min-width: 1400px) {
+
+
+
+}

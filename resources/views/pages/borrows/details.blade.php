@@ -19,9 +19,13 @@
 
                     @if ($borrow->status == 'unreturned')
                         <span class="badge badge-warning" style="font-size: 100%;">{{ ucfirst($borrow->status) }}</span>
+                        &nbsp;
+                        <strong>Return Date: {{ $borrow->return_date->format('F j, Y') }}</strong>
+                    @elseif ($borrow->status == 'returned')
+                        <span class="badge badge-success" style="font-size: 100%;">{{ ucfirst($borrow->status) }}</span>
+                        &nbsp;
+                        <strong>Date Returned: {{ $borrow->date_returned->format('F j, Y') }}</strong>
                     @endif
-                    &nbsp;
-                    <strong>Return Date: {{ $borrow->return_date->format('F j, Y') }}</strong>
                 </article>
             </div>
 
@@ -50,8 +54,15 @@
             </table>
 
             <div class="form-group buttons">
-                <a href="#" class="btn btn-primary">Mark as Returned</a>
-                <a href="{{ $borrow->editUrl() }}" class="btn btn-link">Edit</a>
+                @if ($borrow->status != 'returned')
+                    <form action="{{ $borrow->returnUrl() }}" method="post" autocomplete="off">
+                        <button type="submit" class="btn btn-primary">
+                            Mark as Returned
+                        </button>
+                        <a href="{{ $borrow->editUrl() }}" class="btn btn-link">Edit</a>
+                        {!! csrf_field() !!}
+                    </form>
+                @endif
             </div>
 
         </div>

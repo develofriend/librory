@@ -91,9 +91,12 @@ class BorrowedBooksController extends Controller
             ->withStatus('Updated successfully!');
     }
 
-    public function return(Book $book)
+    public function return(Borrow $borrow)
     {
+        $borrow->markAsReturned();
 
+        return redirect()->route('borrow.all')
+            ->withStatus('Success!');
     }
 
     public function fetchBooks()

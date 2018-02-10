@@ -2,6 +2,7 @@
 
 namespace Librory\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Borrow extends Model
@@ -87,6 +88,13 @@ class Borrow extends Model
         ]);
     }
 
+    public function returnUrl()
+    {
+        return route('borrow.return', [
+            'borrow' => $this->id
+        ]);
+    }
+
     /**
      * -------------------------------------------------------------------------
      * Unsorted functions
@@ -118,5 +126,14 @@ class Borrow extends Model
     public function has($book)
     {
         return in_array($book->id, $this->book_ids);
+    }
+
+    public function markAsReturned()
+    {
+        $this->status = 'returned';
+        $this->date_returned = Carbon::now();
+        $this->save();
+
+        return $this;
     }
 }

@@ -11,10 +11,12 @@ class Borrow extends Model
         'librorian_id',
         'return_date',
         'status',
+        'date_returned'
     ];
 
     protected $dates = [
-        'return_date'
+        'return_date',
+        'date_returned'
     ];
 
     /**

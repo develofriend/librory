@@ -91,6 +91,11 @@ class BorrowedBooksController extends Controller
             ->withStatus('Updated successfully!');
     }
 
+    public function return(Book $book)
+    {
+
+    }
+
     public function fetchBooks()
     {
         $books = Book::orderByTitle();

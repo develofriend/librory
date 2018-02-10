@@ -124,6 +124,7 @@ Route::prefix('borrowed-book')->group(function () {
     Route::post('/save/{user}', 'BorrowedBooksController@save')->name('borrow.save');
     Route::get('/edit/{borrow}', 'BorrowedBooksController@edit')->name('borrow.edit');
     Route::post('/update/{borrow}', 'BorrowedBooksController@update')->name('borrow.update');
+    Route::post('/return/{borrow}', 'BorrowedBooksController@return')->name('borrow.return');
 
     Route::get('/books/fetch', 'BorrowedBooksController@fetchBooks')->name('borrow.books.fetch');
 

@@ -38,7 +38,7 @@ class BooksController extends Controller
         }
 
         $books = $books->paginate(15);
-        $books->load('publisher', 'authors', 'counts');
+        $books->load('publisher', 'authors', 'counts', 'categories');
 
         return view('pages.books.all', compact('books'));
     }

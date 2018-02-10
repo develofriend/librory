@@ -2,6 +2,7 @@
 
 use Librory\Models\Book;
 use Librory\Models\Author;
+use Librory\Models\Category;
 use Librory\Models\BookCount;
 use Librory\Models\Publisher;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,7 @@ class BooksTableSeeder extends Seeder
     {
         $publishers = Publisher::pluck('id')->toArray();
         $authors = Author::pluck('name')->toArray();
+        $categories = Category::pluck('id')->toArray();
 
         $books = factory(Book::class, rand(80, 90))->create([
             'publisher_id' => rand(0, count($publishers) - 1)
@@ -32,6 +34,14 @@ class BooksTableSeeder extends Seeder
             }
 
             $book->linkAuthors($authorNames);
+
+            $categoryIds = [];
+            $categoryCount = rand(1, 3);
+            foreach (range(1, $authorCount) as $index) {
+                $categoryIds[] = $categories[rand(0, count($categories) - 1)];
+            }
+
+            $book->linkCategories($categoryIds);
         }
     }
 }

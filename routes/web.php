@@ -109,5 +109,21 @@ Route::prefix('books')->group(function () {
     Route::post('/{book}/update', 'BooksController@update')->name('books.update');
     Route::get('/{book}/count/add', 'BooksController@addCountForm')->name('books.count.add');
     Route::post('/{book}/count/add', 'BooksController@addCount')->name('books.count.add');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Borrow Route
+|--------------------------------------------------------------------------
+*/
+Route::prefix('borrowed-book')->group(function () {
+
+    Route::get('/all', 'BorrowedBooksController@all')->name('borrow.all');
+    Route::get('/new/{user?}', 'BorrowedBooksController@new')->name('borrow.new');
+    Route::post('/save/{user}', 'BorrowedBooksController@save')->name('borrow.save');
+    Route::get('/edit/{borrow}', 'BorrowedBooksController@edit')->name('borrow.edit');
+    Route::post('/update/{borrow}', 'BorrowedBooksController@update')->name('borrow.update');
+
+    Route::get('/books/fetch', 'BorrowedBooksController@fetchBooks')->name('borrow.books.fetch');
 
 });

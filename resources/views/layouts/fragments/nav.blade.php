@@ -67,6 +67,12 @@
 
             @if (auth()->user()->isLibrorian())
                 <li>
+                    <a href="{{ route('borrow.all') }}">
+                        <i class="fas fa-shopping-basket fa-fw fa-lg"></i>
+                        <span>Borrow</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('books.all') }}">
                         <i class="fas fa-book fa-fw fa-lg"></i>
                         <span>Books</span>
